@@ -21,7 +21,7 @@
       rel="stylesheet"
     />
 
-    <!-- AOS Animation CSS -->
+    <!-- AOS Animation CSS (Apple-Style Reveals) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
@@ -59,102 +59,133 @@
         font-weight: 800;
       }
 
-      /* PREMIUM GRID & NOISE OVERLAY */
-      .cinematic-rays-bg {
+      /* PREMIUM MOVING BACKGROUND ORBS */
+      .bg-orbs-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #050505;
         overflow: hidden;
-        z-index: -2;
-      }
-
-      .light-ray {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 150vw;
-        height: 30vh;
-        opacity: 0.6;
-        filter: blur(60px);
-        transform-origin: center;
-        pointer-events: none;
-      }
-
-      .ray-1 {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(79, 70, 229, 0.25),
-          transparent
-        );
-        animation: sweep-ray-1 18s infinite alternate
-          cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .ray-2 {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(147, 51, 234, 0.2),
-          transparent
-        );
-        height: 40vh;
-        animation: sweep-ray-2 22s infinite alternate-reverse
-          cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .ray-3 {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.08),
-          transparent
-        );
-        height: 15vh;
-        animation: sweep-ray-3 15s infinite alternate
-          cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      @keyframes sweep-ray-1 {
-        0% {
-          transform: translate(-50%, -50%) rotate(-25deg) translateY(-30%);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(10deg) translateY(30%);
-        }
-      }
-
-      @keyframes sweep-ray-2 {
-        0% {
-          transform: translate(-50%, -50%) rotate(15deg) translateX(-20%);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(-15deg) translateX(20%);
-        }
-      }
-
-      @keyframes sweep-ray-3 {
-        0% {
-          transform: translate(-50%, -50%) rotate(-45deg) translateY(40%);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(30deg) translateY(-40%);
-        }
-      }
-
-      .bg-noise-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
         z-index: -1;
         pointer-events: none;
-        mix-blend-mode: overlay;
+      }
+      /* PREMIUM GRID & NOISE OVERLAY */
+/* BACKGROUND CONTAINER */
+.cinematic-rays-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505; /* Deep, brutalist black base */
+  overflow: hidden;
+  z-index: -2;
+}
+
+/* BASE RAY STYLING */
+.light-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vw; /* Stretched wider than the screen */
+  height: 30vh;
+  opacity: 0.6;
+  filter: blur(60px); /* Heavily blurred to create the abstract effect */
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* PRIMARY BEAM - Cool Indigo */
+.ray-1 {
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.25), transparent);
+  animation: sweep-ray-1 18s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* SECONDARY BEAM - Deep Purple */
+.ray-2 {
+  background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.2), transparent);
+  height: 40vh;
+  animation: sweep-ray-2 22s infinite alternate-reverse cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* HIGHLIGHT BEAM - Subtle White/Silver */
+.ray-3 {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  height: 15vh;
+  animation: sweep-ray-3 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* MOVEMENT KEYFRAMES */
+@keyframes sweep-ray-1 {
+  0% { transform: translate(-50%, -50%) rotate(-25deg) translateY(-30%); }
+  100% { transform: translate(-50%, -50%) rotate(10deg) translateY(30%); }
+}
+
+@keyframes sweep-ray-2 {
+  0% { transform: translate(-50%, -50%) rotate(15deg) translateX(-20%); }
+  100% { transform: translate(-50%, -50%) rotate(-15deg) translateX(20%); }
+}
+
+@keyframes sweep-ray-3 {
+  0% { transform: translate(-50%, -50%) rotate(-45deg) translateY(40%); }
+  100% { transform: translate(-50%, -50%) rotate(30deg) translateY(-40%); }
+}
+
+/* OPTIONAL NOISE OVERLAY (Highly recommended for gradients) */
+.bg-noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+  z-index: -1; 
+  pointer-events: none;
+  mix-blend-mode: overlay; 
+}
+      .ambient-glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.5;
+        animation: drift 20s infinite alternate ease-in-out;
+      }
+      .glow-1 {
+        width: 600px;
+        height: 600px;
+        background: rgba(45, 125, 246, 0.15);
+        top: -10%;
+        left: -10%;
+        animation-delay: 0s;
+      }
+      .glow-2 {
+        width: 500px;
+        height: 500px;
+        background: rgba(147, 51, 234, 0.1);
+        bottom: -10%;
+        right: -5%;
+        animation-delay: -5s;
+      }
+      .glow-3 {
+        width: 400px;
+        height: 400px;
+        background: rgba(6, 182, 212, 0.1);
+        top: 40%;
+        left: 30%;
+        animation-delay: -10s;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, 50px) scale(1.1);
+        }
+        100% {
+          transform: translate(-40px, -20px) scale(0.95);
+        }
       }
 
       /* Badges & Section Titles */
@@ -236,7 +267,7 @@
         color: #fff;
         font-weight: 600;
         font-size: 0.9rem;
-        padding: 12px 28px;
+        padding: 10px 24px;
         border-radius: 30px;
         border: none;
         box-shadow: 0 4px 20px rgba(45, 125, 246, 0.3);
@@ -332,15 +363,21 @@
         position: relative;
         z-index: 2;
       }
-      .card-stat,
-      .card-global,
-      .card-stack,
-      .card-builds {
+      .card-stat {
+        grid-column: span 6;
+      }
+      .card-global {
         grid-column: span 6;
       }
       .card-checklist {
         grid-column: span 6;
         grid-row: span 2;
+      }
+      .card-stack {
+        grid-column: span 6;
+      }
+      .card-builds {
+        grid-column: span 6;
       }
 
       @media (max-width: 991px) {
@@ -490,98 +527,91 @@
         padding: 100px 0;
         position: relative;
       }
-
-      /* FEATURED WORK ENHANCEMENTS */
+      .service-card,
+      .tech-grid-card,
       .project-card {
         background: rgba(14, 18, 27, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.07);
+        border: 1px solid var(--bg-card-border);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
+        padding: 32px;
+        height: 100%;
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s ease;
+      }
+      .service-card:hover,
+      .tech-grid-card:hover,
+      .project-card:hover {
+        border-color: rgba(45, 125, 246, 0.4);
+        transform: translateY(-8px);
+      }
+
+      /* TECH LIST */
+      .tech-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .tech-list li {
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 8px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        transition: all 0.3s ease;
+      }
+      .tech-list li:hover {
+        transform: translateX(6px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .tech-icon-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .dot-backend {
+        background-color: #3887fe;
+        box-shadow: 0 0 10px #3887fe;
+      }
+      .dot-frontend {
+        background-color: #facc15;
+        box-shadow: 0 0 10px #facc15;
+      }
+      .dot-uiux {
+        background-color: #c084fc;
+        box-shadow: 0 0 10px #c084fc;
+      }
+      .dot-video {
+        background-color: #22d3ee;
+        box-shadow: 0 0 10px #22d3ee;
+      }
+
+      /* WORK SECTION */
+      .project-card {
         padding: 0;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        transition:
-          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.4s ease,
-          border-color 0.4s ease;
-      }
-      .project-card:hover {
-        border-color: rgba(45, 125, 246, 0.5);
-        transform: translateY(-8px);
-        box-shadow: 0 12px 40px rgba(45, 125, 246, 0.15);
       }
       .project-img-holder {
-        height: 240px;
-        background: linear-gradient(145deg, #0f141e 0%, #1a2235 100%);
+        height: 220px;
+        background: #131926;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .project-img-holder::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(45, 125, 246, 0.2),
-          transparent 60%
-        );
-        pointer-events: none;
       }
 
-      /* EXPERIENCE TIMELINE */
-      .timeline-item {
-        position: relative;
-        padding-left: 32px;
-        padding-bottom: 40px;
-      }
-      .timeline-item:last-child {
-        padding-bottom: 0;
-        border-left-color: transparent !important;
-      }
-      .timeline-dot {
-        position: absolute;
-        left: -7px;
-        top: 0;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-      }
-
-      .timeline-current {
-        border-left: 2px solid var(--primary-blue-glow);
-      }
-      .timeline-current .timeline-dot {
-        background: var(--primary-blue-glow);
-        box-shadow: 0 0 12px var(--primary-blue);
-      }
-
-      .timeline-past {
-        border-left: 2px solid #334155;
-      }
-      .timeline-past .timeline-dot {
-        background: #64748b;
-        box-shadow: none;
-      }
-
-      .company-logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        object-fit: cover;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        flex-shrink: 0;
-      }
-
-      /* 2-LINE DUAL DIRECTION MARQUEE */
+      /* DUAL MARQUEE TESTIMONIALS */
       .testimonials-marquee-wrapper {
         position: relative;
         width: 100vw;
@@ -596,12 +626,11 @@
         padding: 12px 0;
       }
       .track-left {
-        animation: scrollLeft 60s linear infinite;
+        animation: scrollLeft 50s linear infinite;
       }
       .track-right {
-        animation: scrollRight 60s linear infinite;
+        animation: scrollRight 50s linear infinite;
       }
-
       .testimonial-track:hover {
         animation-play-state: paused;
       }
@@ -624,7 +653,7 @@
       }
 
       .testimonial-card {
-        width: 400px;
+        width: 420px;
         flex-shrink: 0;
         background: rgba(14, 18, 27, 0.65);
         border: 1px solid var(--bg-card-border);
@@ -655,220 +684,184 @@
         transform: rotate(10deg);
         pointer-events: none;
       }
-      .big-quote-mark {
-        font-size: 3.5rem;
-        font-family: serif;
-        color: var(--primary-blue-glow);
-        line-height: 0;
-        margin-top: 15px;
-        margin-bottom: 25px;
-        display: block;
+      .stars-svg {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 16px;
+        color: #fbbf24;
       }
 
-      /* EXACT REPLICA STYLE FOOTER SECTION MATCHING REFERENCE SCREENSHOT */
-      .footer-section-wrapper {
-        padding: 80px 0 30px 0;
+      /* EXPERIENCE TIMELINE */
+      .timeline-item {
+        position: relative;
+        padding-left: 32px;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 40px;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+        border-left-color: transparent;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -7px;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--primary-blue-glow);
+        box-shadow: 0 0 12px var(--primary-blue);
+      }
+      /* Experience Logo Props */
+      .company-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
+      }
+
+      /* NEW CUSTOM FOOTER STYLES */
+      .footer-cta-section {
+        padding: 100px 0 40px 0;
+        border-top: 1px solid var(--bg-card-border);
         background-color: var(--bg-dark);
         position: relative;
         z-index: 10;
-        border-top: 1px solid var(--bg-card-border);
       }
-      .footer-top-elements {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 30px;
-      }
-      .connect-pill-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 8px 20px;
+      .footer-badge {
+        display: inline-block;
+        padding: 6px 16px;
         border-radius: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: rgba(255, 255, 255, 0.02);
-        color: #fff;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        background: rgba(255, 255, 255, 0.02);
+        margin-bottom: 24px;
       }
-      .footer-main-headline {
-        font-size: calc(2.2rem + 2vw);
+      .footer-cta-title {
+        font-size: calc(2.2rem + 1.5vw);
         font-weight: 800;
         font-family: var(--font-heading);
         letter-spacing: -0.02em;
-        line-height: 1.1;
-        margin-bottom: 50px;
       }
       .text-glow-project {
         position: relative;
         display: inline-block;
-        color: #fff;
+        color: #fff; /* Keep solid white on top */
       }
       .text-glow-project::after {
         content: "Project";
         position: absolute;
         left: 0;
-        top: 12px;
-        color: rgba(45, 125, 246, 0.3);
+        top: 15px; /* Offset to create the shadow/duplicate effect */
+        color: rgba(45, 125, 246, 0.25); /* Faint blue glow text underneath */
         z-index: -1;
-        filter: blur(2px);
+        filter: blur(1px);
       }
-
-      /* Inner Dark Box matching reference card exactly */
-      .footer-inner-card {
-        position: relative;
-        padding: 50px 40px;
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(14, 18, 27, 0.7);
-        backdrop-filter: blur(20px);
-        overflow: hidden;
-        margin-bottom: 40px;
-      }
-      .connecting-dots-bg {
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        right: -50%;
-        bottom: -50%;
-        background-image: radial-gradient(
-          rgba(45, 125, 246, 0.35) 1.5px,
-          transparent 1.5px
-        );
-        background-size: 35px 35px;
-        z-index: 0;
-        opacity: 0.6;
-        animation: networkDotsMove 30s linear infinite;
-      }
-      @keyframes networkDotsMove {
-        0% {
-          transform: translate(0, 0);
-        }
-        100% {
-          transform: translate(70px, 70px);
-        }
-      }
-      .footer-card-content {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* Footer Nav Menu Links List */
-      .footer-nav-links {
-        display: flex;
-        gap: 25px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        justify-content: flex-end;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      .footer-nav-links a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
+      .btn-white-pill {
+        background-color: #fff;
+        color: #000;
+        font-weight: 600;
         font-size: 0.95rem;
-        transition: color 0.3s ease;
-      }
-      .footer-nav-links a:hover {
-        color: var(--primary-blue-glow);
-      }
-
-      .footer-social-icons {
-        display: flex;
-        gap: 16px;
-        justify-content: flex-end;
-        align-items: center;
-        margin-top: 25px;
-      }
-      .social-icon-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        transition: all 0.2s ease;
+        padding: 12px 32px;
+        border-radius: 30px;
         text-decoration: none;
-      }
-      .social-icon-btn:hover {
-        background: var(--primary-blue);
-        border-color: var(--primary-blue);
-        color: #fff;
-      }
-
-      .footer-brand-title-box {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 12px;
-        font-family: var(--font-heading);
-        font-weight: 800;
-        font-size: 1.5rem;
-        color: #fff;
-        letter-spacing: -0.01em;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .btn-white-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        color: #000;
       }
 
-      .footer-bullet-list {
+      .footer-box {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 25, 35, 0.8) 0%,
+          rgba(14, 18, 27, 0.6) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+      }
+      .footer-box-list {
         list-style: none;
         padding: 0;
         margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .footer-bullet-list li {
         color: var(--text-muted);
         font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .footer-box-list li {
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
       }
-
-      .footer-succeed-slogan {
-        font-family: var(--font-heading);
-        font-weight: 600;
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        margin: 0;
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
       }
-      .footer-succeed-slogan span {
+      .footer-links a {
         color: #fff;
-        font-weight: 800;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: color 0.3s;
       }
-
-      .footer-bottom-bar {
+      .footer-links a:hover {
+        color: var(--primary-blue-glow);
+      }
+      .social-icons a {
+        color: #fff;
+        margin-left: 15px;
+        transition: color 0.3s;
+      }
+      .social-icons a:hover {
+        color: var(--primary-blue-glow);
+      }
+      .footer-slogan {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      .footer-bottom {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         flex-wrap: wrap;
         gap: 15px;
         font-size: 0.85rem;
         color: var(--text-muted);
-        padding-top: 10px;
       }
-      .footer-bottom-bar a {
+      .footer-bottom a {
         color: var(--text-muted);
         text-decoration: none;
-        transition: color 0.2s ease;
+        transition: color 0.3s;
       }
-      .footer-bottom-bar a:hover {
+      .footer-bottom a:hover {
         color: #fff;
       }
     </style>
   </head>
   <body>
-    <!-- PREMIUM ABSTRACT LIGHT RAYS -->
-    <div class="cinematic-rays-bg">
-      <div class="light-ray ray-1"></div>
-      <div class="light-ray ray-2"></div>
-      <div class="light-ray ray-3"></div>
-    </div>
-    <div class="bg-noise-overlay"></div>
+   <!-- PREMIUM ABSTRACT LIGHT RAYS -->
+<div class="cinematic-rays-bg">
+  <div class="light-ray ray-1"></div>
+  <div class="light-ray ray-2"></div>
+  <div class="light-ray ray-3"></div>
+</div>
+
+<!-- Optional: Keep the noise overlay to prevent color banding in the gradients -->
+<div class="bg-noise-overlay"></div>
 
     <!-- FIXED NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark custom-navbar">
@@ -913,10 +906,15 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#portfolio">Portfolio</a>
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#tech">Tech</a></li>
+            <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#experience">History</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact </a>
+              <a class="nav-link" href="#testimonials">Testimonials</a>
             </li>
           </ul>
         </div>
@@ -927,7 +925,7 @@
           data-aos-duration="800"
           data-aos-delay="200"
         >
-          <a href="#contact" class="btn-blue-pill">Contact Us</a>
+          <a href="#work" class="btn-blue-pill">View Work</a>
         </div>
       </div>
     </nav>
@@ -967,8 +965,8 @@
             </p>
 
             <div class="d-flex flex-wrap gap-3">
-              <a href="#portfolio" class="btn-blue-pill">Explore Work</a>
-              <a href="#career" class="btn-outline-pill">My Career</a>
+              <a href="#work" class="btn-blue-pill">Explore Work</a>
+              <a href="#experience" class="btn-outline-pill">My Experience</a>
             </div>
           </div>
 
@@ -1108,13 +1106,13 @@
       </div>
     </div>
 
-    <!-- 3. COMPANY / ABOUT -->
-    <section id="company" class="content-section">
+    <!-- 3. ABOUT / MANIFESTO -->
+    <section id="about" class="content-section">
       <div class="container">
         <div class="bento-card p-4 p-md-5" data-aos="fade-up">
           <div class="row align-items-center g-5">
             <div class="col-lg-7">
-              <span class="section-badge">Company / Manifesto</span>
+              <span class="section-badge">About / Manifesto</span>
               <h2 class="section-title">
                 Where Clean Code Meets Visual Impact
               </h2>
@@ -1171,8 +1169,420 @@
       </div>
     </section>
 
-    <!-- 4. FEATURED PORTFOLIO WORKS -->
-    <section id="portfolio" class="content-section">
+    <!-- 4. SERVICES -->
+    <section id="services" class="content-section">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="section-badge">Services & Capabilities</span>
+          <h2 class="section-title">End-to-End Digital Solutions</h2>
+        </div>
+
+        <div class="row g-4">
+          <!-- Service 1 -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="service-card">
+              <div>
+                <div class="icon-box-blue">
+                  <svg
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                  </svg>
+                </div>
+                <h3 class="card-title-sm mb-2" style="font-size: 1.2rem">
+                  Full-Stack Django Dev
+                </h3>
+                <p class="card-desc-xs">
+                  Custom dynamic web platforms built with Python, Django, and
+                  MySQL. Fully responsive layout structure across PCs, laptops,
+                  tablets, and mobile devices.
+                </p>
+              </div>
+              <div
+                class="mt-4 pt-3 border-top border-secondary border-opacity-10"
+              >
+                <span class="pill-tag tag-blue">Django</span
+                ><span class="pill-tag tag-cyan">MySQL</span
+                ><span class="pill-tag tag-blue">Bootstrap 5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="service-card"
+              style="border-color: rgba(192, 132, 252, 0.2)"
+            >
+              <div>
+                <div
+                  class="icon-box-blue"
+                  style="background: rgba(147, 51, 234, 0.15); color: #c084fc"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  </svg>
+                </div>
+                <h3 class="card-title-sm mb-2" style="font-size: 1.2rem">
+                  UI/UX & Brand Design
+                </h3>
+                <p class="card-desc-xs">
+                  Interface wireframing, vector logo development, visual
+                  identity guidelines, print catalogs, high-converting ad
+                  collateral mapped out in modern design tools, and engaging
+                  social media designs.
+                </p>
+              </div>
+              <div
+                class="mt-4 pt-3 border-top border-secondary border-opacity-10"
+              >
+                <span class="pill-tag tag-purple">Figma</span
+                ><span class="pill-tag tag-purple">Logos</span
+                ><span class="pill-tag tag-purple">Social Media</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="service-card"
+              style="border-color: rgba(6, 182, 212, 0.2)"
+            >
+              <div>
+                <div
+                  class="icon-box-blue"
+                  style="background: rgba(6, 182, 212, 0.15); color: #22d3ee"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <polygon points="23 7 16 12 23 17 23 7" />
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                  </svg>
+                </div>
+                <h3 class="card-title-sm mb-2" style="font-size: 1.2rem">
+                  Video Editing & Post
+                </h3>
+                <p class="card-desc-xs">
+                  Cinematic video editing, short-form reels, sync audio cuts,
+                  dynamic text overlays, motion transitions, and web series
+                  voice dubbing built in Premiere Pro, After Effects, and VN
+                  App.
+                </p>
+              </div>
+              <div
+                class="mt-4 pt-3 border-top border-secondary border-opacity-10"
+              >
+                <span class="pill-tag tag-cyan">Premiere</span
+                ><span class="pill-tag tag-cyan">After Effects</span
+                ><span class="pill-tag tag-cyan">Voice Dubbing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ENHANCED TECH ARCHITECTURE GRID -->
+    <section id="tech" class="content-section">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="section-badge">Tech Stack Matrix</span>
+          <h2 class="section-title">Technical & Creative Architecture</h2>
+          <p class="section-desc mx-auto">
+            An advanced breakdown of backend frameworks, frontend interfaces,
+            design systems, and post-production software mastered over 2+ years.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Back-End Systems -->
+          <div
+            class="col-md-6 col-lg-3"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="tech-grid-card">
+              <div
+                class="d-flex align-items-center justify-content-between mb-3"
+              >
+                <h3
+                  class="card-title-sm mb-0"
+                  style="color: #3887fe; font-size: 1.1rem"
+                >
+                  Back-End Systems
+                </h3>
+                <span
+                  class="badge"
+                  style="
+                    background: rgba(56, 135, 254, 0.15);
+                    color: #3887fe;
+                    font-size: 0.7rem;
+                  "
+                  >Core</span
+                >
+              </div>
+              <p class="card-desc-xs mb-3">
+                Robust server-side logic and database architecture.
+              </p>
+              <ul class="tech-list">
+                <li>
+                  <div class="tech-icon-dot dot-backend"></div>
+                  Python
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-backend"></div>
+                  Django Framework
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-backend"></div>
+                  MySQL Database
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-backend"></div>
+                  REST APIs
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Front-End & Web -->
+          <div
+            class="col-md-6 col-lg-3"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="tech-grid-card">
+              <div
+                class="d-flex align-items-center justify-content-between mb-3"
+              >
+                <h3
+                  class="card-title-sm mb-0"
+                  style="color: #facc15; font-size: 1.1rem"
+                >
+                  Front-End & Web
+                </h3>
+                <span
+                  class="badge"
+                  style="
+                    background: rgba(250, 204, 21, 0.15);
+                    color: #facc15;
+                    font-size: 0.7rem;
+                  "
+                  >Interface</span
+                >
+              </div>
+              <p class="card-desc-xs mb-3">
+                Responsive, interactive, and accessible web layouts.
+              </p>
+              <ul class="tech-list">
+                <li>
+                  <div class="tech-icon-dot dot-frontend"></div>
+                  JavaScript (ES6+)
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-frontend"></div>
+                  Bootstrap 5
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-frontend"></div>
+                  HTML5 & CSS3
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-frontend"></div>
+                  Responsive Design
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- UI/UX & Design -->
+          <div
+            class="col-md-6 col-lg-3"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="tech-grid-card"
+              style="border-color: rgba(192, 132, 252, 0.3)"
+            >
+              <div
+                class="d-flex align-items-center justify-content-between mb-3"
+              >
+                <h3
+                  class="card-title-sm mb-0"
+                  style="color: #c084fc; font-size: 1.1rem"
+                >
+                  UI/UX & Design
+                </h3>
+                <span
+                  class="badge"
+                  style="
+                    background: rgba(192, 132, 252, 0.15);
+                    color: #c084fc;
+                    font-size: 0.7rem;
+                  "
+                  >Creative</span
+                >
+              </div>
+              <p class="card-desc-xs mb-3">
+                Brand identity, wireframing, and visual assets.
+              </p>
+              <ul class="tech-list">
+                <li>
+                  <div class="tech-icon-dot dot-uiux"></div>
+                  Figma & Balsamiq
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-uiux"></div>
+                  Adobe Photoshop
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-uiux"></div>
+                  Adobe Illustrator
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-uiux"></div>
+                  Canva
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Video & Post -->
+          <div
+            class="col-md-6 col-lg-3"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="tech-grid-card">
+              <div
+                class="d-flex align-items-center justify-content-between mb-3"
+              >
+                <h3
+                  class="card-title-sm mb-0"
+                  style="color: #22d3ee; font-size: 1.1rem"
+                >
+                  Video & Post
+                </h3>
+                <span
+                  class="badge"
+                  style="
+                    background: rgba(34, 211, 238, 0.15);
+                    color: #22d3ee;
+                    font-size: 0.7rem;
+                  "
+                  >Production</span
+                >
+              </div>
+              <p class="card-desc-xs mb-3">
+                Cinematic editing, motion graphics, and audio sync.
+              </p>
+              <ul class="tech-list">
+                <li>
+                  <div class="tech-icon-dot dot-video"></div>
+                  Premiere Pro
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Advanced</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-video"></div>
+                  After Effects
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Skilled</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-video"></div>
+                  VN Editor
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Expert</span
+                  >
+                </li>
+                <li>
+                  <div class="tech-icon-dot dot-video"></div>
+                  Voice Dubbing
+                  <span class="ms-auto text-muted" style="font-size: 0.75rem"
+                    >Pro</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FEATURED WORK -->
+    <section id="work" class="content-section">
       <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
           <span class="section-badge">Selected Works</span>
@@ -1184,35 +1594,24 @@
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <div class="project-card">
               <div class="project-img-holder">
-                <div
-                  class="p-4 text-center position-relative"
-                  style="z-index: 2"
-                >
-                  <span
-                    class="badge mb-3 py-2 px-3"
-                    style="
-                      background: rgba(45, 125, 246, 0.15);
-                      color: #60a5fa;
-                      border: 1px solid rgba(45, 125, 246, 0.3);
-                    "
+                <div class="p-3 text-center">
+                  <span class="badge bg-primary mb-2"
                     >Full-Stack Application</span
                   >
-                  <h4 class="text-white fs-3 fw-bold mb-0">
-                    Grooming Platform
-                  </h4>
+                  <h4 class="text-white">Grooming Platform</h4>
                 </div>
               </div>
-              <div class="p-4 flex-grow-1 d-flex flex-column">
-                <h3 class="card-title-sm" style="font-size: 1.25rem">
+              <div class="p-4">
+                <h3 class="card-title-sm" style="font-size: 1.2rem">
                   Live Appointment Booking Engine
                 </h3>
-                <p class="card-desc-xs mt-2 mb-4">
+                <p class="card-desc-xs mt-2">
                   Engineered a dynamic booking platform using Django and MySQL
                   that processed over 300+ live transactions with seamless
                   scheduling across mobile, tablet, and desktop interfaces.
                 </p>
                 <div
-                  class="mt-auto pt-3 border-top border-secondary border-opacity-25"
+                  class="mt-3 pt-3 border-top border-secondary border-opacity-10"
                 >
                   <span class="pill-tag tag-blue">Django</span
                   ><span class="pill-tag tag-cyan">MySQL</span>
@@ -1225,35 +1624,24 @@
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="project-card">
               <div class="project-img-holder">
-                <div
-                  class="p-4 text-center position-relative"
-                  style="z-index: 2"
-                >
-                  <span
-                    class="badge mb-3 py-2 px-3"
-                    style="
-                      background: rgba(147, 51, 234, 0.15);
-                      color: #c084fc;
-                      border: 1px solid rgba(147, 51, 234, 0.3);
-                    "
+                <div class="p-3 text-center">
+                  <span class="badge mb-2" style="background: #9333ea"
                     >Branding & Brochure</span
                   >
-                  <h4 class="text-white fs-3 fw-bold mb-0">
-                    Angee's Snacks Branding
-                  </h4>
+                  <h4 class="text-white">Angee's Snacks Branding</h4>
                 </div>
               </div>
-              <div class="p-4 flex-grow-1 d-flex flex-column">
-                <h3 class="card-title-sm" style="font-size: 1.25rem">
+              <div class="p-4">
+                <h3 class="card-title-sm" style="font-size: 1.2rem">
                   Pet Treats Identity & Catalog
                 </h3>
-                <p class="card-desc-xs mt-2 mb-4">
+                <p class="card-desc-xs mt-2">
                   Developed vector logo variants, visual guidelines, digital
                   banners, packaging designs, and a structured wholesale
                   vertical brochure for product presentation.
                 </p>
                 <div
-                  class="mt-auto pt-3 border-top border-secondary border-opacity-25"
+                  class="mt-3 pt-3 border-top border-secondary border-opacity-10"
                 >
                   <span class="pill-tag tag-purple">Identity Design</span
                   ><span class="pill-tag tag-purple">Brochures</span>
@@ -1265,8 +1653,8 @@
       </div>
     </section>
 
-    <!-- 5. CAREER EXPERIENCE HISTORY -->
-    <section id="career" class="content-section pt-0">
+    <!-- 7. COMPLETE EXPERIENCE HISTORY -->
+    <section id="experience" class="content-section">
       <div class="container">
         <div class="row g-5">
           <div class="col-lg-4" data-aos="fade-right">
@@ -1281,12 +1669,8 @@
 
           <div class="col-lg-8">
             <div class="bento-card p-4 p-md-5" data-aos="fade-left">
-              <!-- Swopu Creation (CURRENT) -->
-              <div
-                class="timeline-item timeline-current"
-                data-aos="fade-up"
-                data-aos-delay="50"
-              >
+              <!-- Swopu Creation (NEW) -->
+              <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
                 <div class="timeline-dot"></div>
                 <div class="d-flex align-items-center gap-3 mb-2">
                   <img
@@ -1304,14 +1688,8 @@
                       >
                         Creative Designer at Swopu Creation
                       </h3>
-                      <span
-                        class="badge"
-                        style="
-                          background: rgba(45, 125, 246, 0.15);
-                          color: var(--primary-blue-glow);
-                          border: 1px solid var(--primary-blue);
-                        "
-                        >Jun 2026 - Present</span
+                      <span class="badge bg-secondary"
+                        >Jun 2026 - Present · 3 mos</span
                       >
                     </div>
                     <h4 class="card-desc-xs fw-semibold text-white mb-0">
@@ -1325,13 +1703,15 @@
                   marketing materials for both digital and social media
                   platforms. My responsibilities included editing promotional
                   and UGC videos, producing motion graphics, and developing
-                  creative assets.
+                  creative assets for clients in the sports, finance, real
+                  estate, music, and technology industries, helping brands
+                  communicate effectively and enhance their online presence.
                 </p>
               </div>
 
-              <!-- Angee's Snacks (PAST) -->
+              <!-- Angee's Snacks -->
               <div
-                class="timeline-item timeline-past"
+                class="timeline-item"
                 data-aos="fade-up"
                 data-aos-delay="100"
               >
@@ -1352,13 +1732,7 @@
                       >
                         Angee's Snacks
                       </h3>
-                      <span
-                        class="badge"
-                        style="
-                          background: #1e293b;
-                          color: #cbd5e1;
-                          border: 1px solid #334155;
-                        "
+                      <span class="badge bg-secondary"
                         >Dec 2025 - May 2026</span
                       >
                     </div>
@@ -1370,15 +1744,19 @@
                 <p class="card-desc-xs mt-2">
                   Designed comprehensive brand identity, including logo,
                   typography, colour system, and visual direction for pet treats
-                  brand. Created packaging designs and realistic mockups for dog
-                  & cat treats, optimising presentation for marketplace listing.
-                  Produced social media creatives.
+                  brand, enhancing brand recognition. Created packaging designs
+                  and realistic mockups for dog & cat treats, optimising
+                  presentation for production and marketplace listing. Produced
+                  social media creatives and promotional visuals to effectively
+                  support go-to-market activities, driving engagement.
+                  Maintained consistent, trustworthy and premium brand
+                  presentation across touchpoints.
                 </p>
               </div>
 
-              <!-- Little Heart Pet Shop (PAST) -->
+              <!-- Little Heart Pet Shop -->
               <div
-                class="timeline-item timeline-past"
+                class="timeline-item"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -1399,13 +1777,7 @@
                       >
                         Little Heart Pet Shop
                       </h3>
-                      <span
-                        class="badge"
-                        style="
-                          background: #1e293b;
-                          color: #cbd5e1;
-                          border: 1px solid #334155;
-                        "
+                      <span class="badge bg-secondary"
                         >Aug 2025 - May 2026</span
                       >
                     </div>
@@ -1417,8 +1789,184 @@
                 <p class="card-desc-xs mt-2">
                   Responsible for filming the full pet grooming process and
                   editing high-quality videos using VN to showcase the shop’s
-                  services across social platforms. Also handled graphic design
-                  tasks including posters, banners, and promotional materials.
+                  services across social platforms. Also handle graphic design
+                  tasks including posters, banners, social media creatives, and
+                  promotional materials to strengthen brand visibility and
+                  customer engagement.
+                </p>
+              </div>
+
+              <!-- Blue Sky Industries -->
+              <div
+                class="timeline-item"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div class="timeline-dot"></div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Blue+Sky+Industries&background=0e121b&color=fff&border=1"
+                    alt="Blue Sky Industries Logo"
+                    class="company-logo"
+                  />
+                  <div class="w-100">
+                    <div
+                      class="d-flex justify-content-between flex-column flex-md-row mb-1"
+                    >
+                      <h3
+                        class="card-title-sm mb-0"
+                        style="font-size: 1.15rem; color: #3887fe"
+                      >
+                        Blue Sky Industries
+                      </h3>
+                      <span class="badge bg-secondary"
+                        >May 2025 - May 2025</span
+                      >
+                    </div>
+                    <h4 class="card-desc-xs fw-semibold text-white mb-0">
+                      Nepal · Contract
+                    </h4>
+                  </div>
+                </div>
+                <p class="card-desc-xs mt-2">
+                  Designed and delivered a professional logo aligned with the
+                  company's vision and approved for official use. Created a
+                  cohesive brand style guide outlining logo usage, color
+                  schemes, typography, and visual elements to ensure consistent
+                  application across all marketing materials and platforms.
+                </p>
+              </div>
+
+              <!-- Bytesoft Nepal -->
+              <div
+                class="timeline-item"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <div class="timeline-dot"></div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Bytesoft+Nepal&background=0e121b&color=fff&border=1"
+                    alt="Bytesoft Nepal Logo"
+                    class="company-logo"
+                  />
+                  <div class="w-100">
+                    <div
+                      class="d-flex justify-content-between flex-column flex-md-row mb-1"
+                    >
+                      <h3
+                        class="card-title-sm mb-0"
+                        style="font-size: 1.15rem; color: #facc15"
+                      >
+                        Bytesoft Nepal
+                      </h3>
+                      <span class="badge bg-secondary"
+                        >Apr 2025 - May 2026</span
+                      >
+                    </div>
+                    <h4 class="card-desc-xs fw-semibold text-white mb-0">
+                      Nepal · On-site
+                    </h4>
+                  </div>
+                </div>
+                <p class="card-desc-xs mt-2">
+                  Worked in a design-led role, architecting comprehensive UI/UX
+                  systems and high-fidelity prototypes within Figma. Developed
+                  scalable visual languages and brand identity assets using
+                  Adobe Creative Suite, ensuring surgical precision across all
+                  digital interfaces. Collaborated on user-centered design
+                  strategies to enhance project aesthetics and maintain rigorous
+                  brand consistency.
+                </p>
+              </div>
+
+              <!-- XDezo Technologies -->
+              <div
+                class="timeline-item"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                <div class="timeline-dot"></div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img
+                    src="https://ui-avatars.com/api/?name=XDezo+Technologies&background=0e121b&color=fff&border=1"
+                    alt="XDezo Technologies Logo"
+                    class="company-logo"
+                  />
+                  <div class="w-100">
+                    <div
+                      class="d-flex justify-content-between flex-column flex-md-row mb-1"
+                    >
+                      <h3
+                        class="card-title-sm mb-0"
+                        style="font-size: 1.15rem; color: #60a5fa"
+                      >
+                        XDezo Technologies
+                      </h3>
+                      <span class="badge bg-secondary"
+                        >Dec 2024 - Apr 2025</span
+                      >
+                    </div>
+                    <h4 class="card-desc-xs fw-semibold text-white mb-0">
+                      Nepal · Hybrid
+                    </h4>
+                  </div>
+                </div>
+                <p class="card-desc-xs mt-2">
+                  Designed the Conversational User Interface (CUX) and visual
+                  identity for 'Telegram Xdezo Bot,' a real-time enrollment
+                  management system. Focused on mapping intuitive user flows and
+                  information architecture to simplify complex data
+                  interactions. Optimized the visual hierarchy and interface
+                  logic, resulting in a 30% improvement in user task completion
+                  speed. Collaborated with the team to bridge the gap between
+                  high-fidelity design concepts and final technical
+                  implementation.
+                </p>
+              </div>
+
+              <!-- Code Zenith Nepal -->
+              <div
+                class="timeline-item"
+                data-aos="fade-up"
+                data-aos-delay="600"
+              >
+                <div class="timeline-dot"></div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img
+                    src="https://ui-avatars.com/api/?name=Code+Zenith+Nepal&background=0e121b&color=fff&border=1"
+                    alt="Code Zenith Nepal Logo"
+                    class="company-logo"
+                  />
+                  <div class="w-100">
+                    <div
+                      class="d-flex justify-content-between flex-column flex-md-row mb-1"
+                    >
+                      <h3
+                        class="card-title-sm mb-0"
+                        style="font-size: 1.15rem; color: #c084fc"
+                      >
+                        Code Zenith Nepal
+                      </h3>
+                      <span class="badge bg-secondary"
+                        >Nov 2024 - Apr 2025</span
+                      >
+                    </div>
+                    <h4 class="card-desc-xs fw-semibold text-white mb-0">
+                      Nepal · On-site
+                    </h4>
+                  </div>
+                </div>
+                <p class="card-desc-xs mt-2">
+                  Architected the foundational visual DNA and digital identity
+                  for a high-growth technology startup. Designed a comprehensive
+                  UI component library and responsive design system to ensure
+                  seamless cross-platform scalability. Strategized the Product
+                  Interface from wireframe to high-fidelity implementation,
+                  prioritizing aesthetic clarity and system efficiency.
+                  Collaborated within an agile founding team to establish a
+                  cohesive brand presence that supported early-stage market
+                  entry.
                 </p>
               </div>
             </div>
@@ -1427,29 +1975,31 @@
       </div>
     </section>
 
-    <!-- 6. 2-LINE BI-DIRECTIONAL TESTIMONIAL MARQUEE -->
-    <section class="content-section">
+    <!-- 8. UPGRADED APPLE-STYLE INFINITE TESTIMONIAL MARQUEE 🌟 -->
+    <section id="testimonials" class="content-section">
       <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
           <span class="section-badge">Client & Team Feedback</span>
-          <h2 class="section-title">What They Say About My Work</h2>
+          <h2 class="section-title">Testimonials & Client Trust</h2>
           <p class="section-desc mx-auto">
-            Direct feedback from clients and collaborators on my hybrid
-            technical logic and visual design execution.
+            What clients and collaborators say about my hybrid technical logic
+            and visual design execution.
           </p>
         </div>
       </div>
 
+      <!-- Dual Scrolling Marquee Container -->
       <div
         class="testimonials-marquee-wrapper"
         data-aos="fade-in"
         data-aos-duration="1200"
       >
-        <!-- TOP ROW: Moves Right to Left -->
+        <!-- TOP TRACK (Moving Left) -->
         <div class="testimonial-track track-left mb-4">
+          <!-- Card 1 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "Biwash brought rare dual capability to our project. He didn't
               just map out the UI and design our brand assets seamlessly; he
@@ -1462,9 +2012,10 @@
               <p class="card-desc-xs">Client Partner</p>
             </div>
           </div>
+          <!-- Card 2 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+           
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "The product catalog and visual identity designed for Angee's
               Snacks gave our brand complete confidence in the marketplace.
@@ -1477,9 +2028,10 @@
               <p class="card-desc-xs">Brand Design Client</p>
             </div>
           </div>
+          <!-- Card 3 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+           
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "Biwash's video edits and dynamic reel cuts brought huge visual
               energy to our promotional content. He understands pacing, color
@@ -1493,10 +2045,10 @@
             </div>
           </div>
 
-          <!-- Duplicates for Infinite Loop -->
+          <!-- DUPLICATE SET for infinite loop -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "Biwash brought rare dual capability to our project. He didn't
               just map out the UI and design our brand assets seamlessly; he
@@ -1511,7 +2063,7 @@
           </div>
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "The product catalog and visual identity designed for Angee's
               Snacks gave our brand complete confidence in the marketplace.
@@ -1526,7 +2078,7 @@
           </div>
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+         
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
               "Biwash's video edits and dynamic reel cuts brought huge visual
               energy to our promotional content. He understands pacing, color
@@ -1541,227 +2093,223 @@
           </div>
         </div>
 
-        <!-- BOTTOM ROW: Moves Left to Right -->
+        <!-- BOTTOM TRACK (Moving Right) -->
         <div class="testimonial-track track-right">
+          <!-- Card 4 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "We needed a full-stack booking system that wouldn't crash under
-              pressure. The Django platform handled over 300 live appointments
-              flawlessly and securely."
+              "A rare talent who bridges the gap between meticulous backend
+              Django logic and beautiful Figma interfaces. Our enrollment system
+              is drastically smoother."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Full-Stack Project</h4>
-              <p class="card-desc-xs">Web Application</p>
+              <h4 class="card-title-sm mb-0">XDezo Technologies</h4>
+              <p class="card-desc-xs">Tech Startup</p>
             </div>
           </div>
+          <!-- Card 5 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "His eye for visual hierarchy and clean design principles elevated
-              our ad creatives. The structured pricing tiers were presented
-              brilliantly in the final pitch."
+              "The professional logo and style guide completely transformed our
+              official branding. Cohesive, clean, and exactly aligned with our
+              vision."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Corporate Executive</h4>
-              <p class="card-desc-xs">Freelance Proposal</p>
+              <h4 class="card-title-sm mb-0">Blue Sky Industries</h4>
+              <p class="card-desc-xs">Corporate Client</p>
             </div>
           </div>
+          <!-- Card 6 -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "A reliable asset for our team. From editing UGC content to
-              producing motion graphics, he consistently delivers top-tier
-              marketing materials for international brands."
+              "He architected our entire UI component library with surgical
+              precision. It directly supported our early-stage market entry
+              perfectly."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Swopu Creation</h4>
-              <p class="card-desc-xs">Design Agency</p>
+              <h4 class="card-title-sm mb-0">Code Zenith Nepal</h4>
+              <p class="card-desc-xs">Software Agency</p>
             </div>
           </div>
 
-          <!-- Duplicates for Infinite Loop -->
+          <!-- DUPLICATE SET -->
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+          
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "We needed a full-stack booking system that wouldn't crash under
-              pressure. The Django platform handled over 300 live appointments
-              flawlessly and securely."
+              "A rare talent who bridges the gap between meticulous backend
+              Django logic and beautiful Figma interfaces. Our enrollment system
+              is drastically smoother."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Full-Stack Project</h4>
-              <p class="card-desc-xs">Web Application</p>
+              <h4 class="card-title-sm mb-0">XDezo Technologies</h4>
+              <p class="card-desc-xs">Tech Startup</p>
             </div>
           </div>
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
+           
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "His eye for visual hierarchy and clean design principles elevated
-              our ad creatives. The structured pricing tiers were presented
-              brilliantly in the final pitch."
+              "The professional logo and style guide completely transformed our
+              official branding. Cohesive, clean, and exactly aligned with our
+              vision."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Corporate Executive</h4>
-              <p class="card-desc-xs">Freelance Proposal</p>
+              <h4 class="card-title-sm mb-0">Blue Sky Industries</h4>
+              <p class="card-desc-xs">Corporate Client</p>
             </div>
           </div>
           <div class="testimonial-card">
             <div class="quote-bg">"</div>
-            <div class="big-quote-mark">&ldquo;</div>
             <p class="card-desc-xs" style="font-size: 0.95rem; color: #fff">
-              "A reliable asset for our team. From editing UGC content to
-              producing motion graphics, he consistently delivers top-tier
-              marketing materials for international brands."
+              "He architected our entire UI component library with surgical
+              precision. It directly supported our early-stage market entry
+              perfectly."
             </p>
             <div
               class="mt-4 pt-3 border-top border-secondary border-opacity-10"
             >
-              <h4 class="card-title-sm mb-0">Swopu Creation</h4>
-              <p class="card-desc-xs">Design Agency</p>
+              <h4 class="card-title-sm mb-0">Code Zenith Nepal</h4>
+              <p class="card-desc-xs">Software Agency</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. EXACT MATCH REFERENCE FOOTER & CTA -->
-    <footer id="contact" class="footer-section-wrapper">
+    <!-- REDESIGNED FOOTER (Matching image reference) -->
+    <section class="footer-cta-section" data-aos="fade-in">
       <div class="container">
-        <!-- Top header row with small pill & button matching screenshot -->
-        <div class="footer-top-elements" data-aos="fade-up">
-          <div class="connect-pill-badge">Connect with me</div>
-          <a
-            href="mailto:biwash.creatives@gmail.com"
-            class="btn-blue-pill px-4 py-2"
-            >Contact me</a
-          >
+        <!-- Call to Action Top Elements -->
+        <div class="mb-4">
+          <span class="footer-badge">Connect with us</span>
         </div>
 
-        <!-- Headline -->
-        <h2
-          class="footer-main-headline text-white"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Let's talk about your <span class="text-glow-project">Project</span>
-        </h2>
-
-        <!-- Main Card Wrapper with Loop Dots Animation Background -->
         <div
-          class="footer-inner-card"
-          data-aos="zoom-in-up"
-          data-aos-delay="200"
+          class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-5 gap-4"
         >
-          <div class="connecting-dots-bg"></div>
+          <h2 class="footer-cta-title mb-0">
+            Let's talk about your <span class="text-glow-project" style="color: #3887fe;">Project</span>
+          </h2>
+          <a href="#contact" class="btn-white-pill">Contact us</a>
+        </div>
 
-          <div class="footer-card-content">
-            <div class="row align-items-center g-4">
-              <!-- Left side: Brand identity & values bullets -->
-              <div class="col-lg-7">
-                <div class="footer-brand-title-box mb-3">
-                  <div class="brand-icon">B</div>
-                  <span
-                    >biwash<span style="color: var(--primary-blue-glow)"
-                      >.creatives</span
-                    ></span
-                  >
-                </div>
-
-                <ul class="footer-bullet-list">
-                  <li>• We build like a startup 🚀</li>
-                  <li>• Work on products we believe in 💻</li>
-                  <li>• Grow together as a team 📈</li>
-                </ul>
+        <!-- Main Footer Information Box -->
+        <div class="footer-box">
+          <div class="row gy-4">
+            <!-- Left side: Logo & List -->
+            <div class="col-md-6">
+              <div
+                class="navbar-brand mb-4 d-inline-flex"
+                style="font-size: 1.5rem"
+              >
+                <div class="brand-icon">B</div>
+                <span class="text-white"
+                  >biwash<span style="color: var(--primary-blue-glow)"
+                    >.creatives</span
+                  ></span
+                >
               </div>
 
-              <!-- Right side: Exact nav menus and social icons matching layout -->
-              <div class="col-lg-5">
-                <ul class="footer-nav-links">
-                  <li><a href="#home">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#portfolio">Portfolio</a></li>
-                  <li><a href="#contact">Contact </a></li>
-                </ul>
+              <ul class="footer-box-list">
+                <li>We build like a startup 🚀</li>
+                <li>Work on products we believe in 💻</li>
+                <li>Grow together as a team 🤝</li>
+              </ul>
+            </div>
 
-                <div class="footer-social-icons">
-                  <a href="#" class="social-icon-btn" aria-label="LinkedIn">
-                    <svg
-                      width="15"
-                      height="15"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
-                      />
-                    </svg>
-                  </a>
-                  <a href="#" class="social-icon-btn" aria-label="Facebook">
-                    <svg
-                      width="15"
-                      height="15"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M16 8.049c0-4.446-3.582-8.05-8-805C3.58 0-.002 3.603-.002 8.049c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-                      />
-                    </svg>
-                  </a>
-                  <a href="#" class="social-icon-btn" aria-label="Instagram">
-                    <svg
-                      width="15"
-                      height="15"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.198-.509.333-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 3.151-.045h.002zM5.5 8a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0zM12.08 4.6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-                      />
-                    </svg>
-                  </a>
-                </div>
+            <!-- Right side: Links, Socials & Slogan -->
+            <div
+              class="col-md-6 d-flex flex-column align-items-start align-items-md-end justify-content-between"
+            >
+              <div class="footer-links mb-4">
+                <a href="#home">Home</a>
+                <a href="#about">Company</a>
+                <a href="#experience">Career</a>
+                <a href="#contact">Contact Us</a>
+              </div>
 
-                <div class="text-lg-end mt-3">
-                  <p class="footer-succeed-slogan">
-                    Dream Big Build Bigger <span>Succeed</span> Together.
-                  </p>
-                </div>
+              <div class="social-icons mb-4 d-flex gap-2">
+                <a href="#" aria-label="LinkedIn"
+                  ><svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
+                    /></svg
+                ></a>
+                <a href="#" aria-label="Facebook"
+                  ><svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                    /></svg
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                    /></svg
+                ></a>
+              </div>
+
+              <div
+                class="footer-slogan mt-md-auto text-md-end text-start text-white"
+              >
+                Dream Big Build Bigger <strong>Succeed</strong> Together.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Absolute Bottom Bar matching reference copyright and privacy split -->
-        <div class="footer-bottom-bar">
-          <p class="mb-0">© 2026 biwash.creatives. All rights reserved.</p>
-          <!-- <a href="#">Privacy</a> -->
+        <!-- Bottom Line -->
+        <div class="footer-bottom">
+          <div>© 2026 biwash.creatives (P) Ltd. All rights reserved.</div>
+          <div><a href="#">Privacy</a></div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Bootstrap & AOS Scripts -->
+    <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS (Apple-Style Animations) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      // Initialize Animations
       AOS.init({
+        duration: 800,
+        easing: "ease-out-cubic",
         once: true,
-        offset: 50,
+        offset: 60,
       });
     </script>
   </body>
