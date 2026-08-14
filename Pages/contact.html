@@ -71,11 +71,25 @@
         padding: 16px 0; transition: all 0.3s ease;
       }
       .navbar-brand { font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; display: flex; align-items: center; gap: 10px; }
-      .brand-icon {
-        width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
-        border-radius: 8px; display: flex; align-items: center; justify-content: center;
-        font-weight: 900; font-size: 0.9rem; color: #fff;
-      }
+     .brand-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: visible;
+  transform: translateX(60px);
+}
+
+.brand-icon img {
+  
+  width: 460%;
+  height: 460%;
+  object-fit: contain;
+  display: block;
+  transform: translateY(8px);
+}
       .nav-pill-active {
         background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 30px; color: #fff !important; padding: 6px 18px !important;
@@ -245,9 +259,10 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark custom-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <div class="brand-icon">B</div>
-          <span>biwash<span style="color: var(--primary-blue-glow)">.creatives</span></span>
+        <a class="navbar-brand" href="../index.html">
+         <div class="brand-icon">
+  <img src="../Images/BiwashLogo.png" alt="Biwash Creatives Logo">
+</div>
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#agencyNav">
           <span class="navbar-toggler-icon"></span>
@@ -260,9 +275,7 @@
             <li class="nav-item"><a class="nav-link nav-pill-active" href="contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="d-none d-lg-flex align-items-center gap-3">
-          <a href="mailto:biwash.creatives@gmail.com" class="btn btn-primary" style="border-radius: 30px; font-weight: 600; padding: 10px 24px; background: var(--primary-blue); border: none;">Hire Me</a>
-        </div>
+      
       </div>
     </nav>
 
@@ -472,8 +485,12 @@
             <div class="row align-items-center g-4">
               <div class="col-lg-7">
                 <div class="footer-brand-title-box mb-3">
-                  <div class="brand-icon">B</div>
-                  <span>biwash<span style="color: var(--primary-blue-glow)">.creatives</span></span>
+                
+
+
+                   <div class="brand-icon">
+                    <img src="../Images/biwash logo with tag line.png" alt="Biwash Creatives Logo">
+                  </div>
                 </div>
                 <ul class="footer-bullet-list">
                   <li>• We build like a startup 🚀</li>
