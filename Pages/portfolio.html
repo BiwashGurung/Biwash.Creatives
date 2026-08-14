@@ -7,6 +7,11 @@
 
     <link rel="icon" type="Biwash Logo" href="../Images/BiwashLogo.png" />
 
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+
 
     <!-- Bootstrap 5 CSS -->
     <link
@@ -530,72 +535,145 @@
   margin: 0 0 4px 0;
 }
 
-      /* SECTION 3: WEB DEVELOPMENT */
-      .web-card {
-        background: rgba(14, 18, 27, 0.5);
-        border: 1px solid var(--bg-card-border);
-        border-radius: 24px;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-      }
-      .web-card:hover {
-        border-color: rgba(45, 125, 246, 0.4);
-        transform: translateY(-4px);
-      }
-      .web-card-image {
-        width: 100%;
-        height: 320px;
-        background: #151a25;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-      .web-card-image::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(14, 18, 27, 1), transparent);
-        z-index: 1;
-      }
-      .mockup-placeholder {
-        width: 85%;
-        height: 85%;
-        background: #0a0d14;
-        border-radius: 12px 12px 0 0;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: none;
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-        position: relative;
-        top: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-muted);
-      }
-      .web-card-content {
-        padding: 32px;
-        position: relative;
-        z-index: 2;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .web-card-title {
-        font-size: 1.6rem;
-        font-weight: 800;
-        margin-bottom: 12px;
-      }
-      .web-card-desc {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-        margin-bottom: 24px;
-        line-height: 1.7;
-      }
+     /* SECTION 3: WEB DEVELOPMENT */
+
+.web-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.web-card {
+  background: rgba(14, 18, 27, 0.8);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+  position: relative;
+  min-height: 198px;
+}
+
+.web-card:hover {
+  border-color: rgba(45, 125, 246, 0.4);
+  transform: translateY(-3px);
+  background: rgba(18, 23, 33, 0.95);
+}
+
+.web-card-content {
+  padding: 22px 20px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Project title */
+
+.web-card-title {
+  color: var(--primary-blue-glow);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.web-card-title::before {
+  content: "\f02e";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--primary-blue-glow);
+  font-size: 1rem;
+}
+
+/* Project description */
+
+.web-card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  line-height: 1.65;
+}
+
+.web-card-desc strong {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* Project tags */
+
+.web-card .pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 12px;
+  margin-bottom: 4px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: 0.82rem;
+}
+
+
+.tech-outline {
+  padding: 5px 12px !important;
+  border: 1px solid rgba(148, 163, 184, 0.3) !important;
+  border-radius: 50px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  margin-right: 6px !important;
+  margin-bottom: 6px !important;
+  transition: all 0.25s ease;
+}
+
+.tech-outline:hover {
+  border-color: rgba(56, 135, 254, 0.6) !important;
+  background: rgba(56, 135, 254, 0.08) !important;
+}
+
+/* Remove old image area completely */
+
+.web-card-image,
+.mockup-placeholder {
+  display: none;
+}
+
+/* Desktop */
+
+@media (min-width: 992px) {
+  .web-card-content {
+    max-width: 100%;
+  }
+}
+
+/* Tablet & Mobile */
+
+@media (max-width: 991px) {
+  .web-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .web-card {
+    min-height: auto;
+  }
+
+  .web-card-content {
+    padding: 20px 18px;
+  }
+
+  .web-card-title {
+    font-size: 1.05rem;
+  }
+
+  .web-card-desc {
+    font-size: 0.9rem;
+  }
+}
 
       /* FOOTER EXACT MATCH STYLES */
       .footer-section-wrapper {
@@ -1625,318 +1703,175 @@
   </p>
 </div>
 
-        <div class="row g-4">
+  <div class="web-project-grid">
 
-  <!-- PROJECT 1 — IMAGE LEFT / TEXT RIGHT -->
-  <div class="col-lg-12" data-aos="fade-up" id="littleheart">
-    <div class="web-card flex-lg-row">
+  <!-- PROJECT 1 -->
+  <div class="web-card" data-aos="fade-up" id="littleheart">
+    <div class="web-card-content">
 
-      <!-- IMAGE -->
-      <div
-        class="web-card-image"
-        style="
-          width: 100%;
-          max-width: 580px;
-          height: auto;
-          min-height: 380px;
-        "
+      <div class="mb-3">
+        <span class="pill-tag tag-blue tech-outline">Python</span>
+        <span class="pill-tag tag-blue tech-outline">JS</span>
+        <span class="pill-tag tag-gray tech-outline">MySQL</span>
+        <span class="pill-tag tag-purple tech-outline">300+ Bookings</span>
+        <span class="pill-tag tag-gray tech-outline">cPanel</span>
+      </div>
+
+      <h3 class="web-card-title">
+        Little-Heart-Pet-Shop
+      </h3>
+
+      <p class="web-card-desc">
+        Full-stack grooming platform. Engineered with Django and MySQL.
+        Successfully processed <strong>300+ live bookings</strong>.
+      </p>
+
+      <a
+        href="../TechCaseStudies/little-heart-case-study.html"
+        class="btn btn-outline-light rounded-pill px-4 py-2"
+        style="font-weight: 600; font-size: 0.9rem"
       >
-        <img
-          src="../Images/Little-Heart-Pet-Shop.png"
-          alt="Little Heart Pet Shop"
-          style="
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            object-fit: cover;
-            display: block;
-          "
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="web-card-content justify-content-center px-lg-5">
-        <div class="mb-3">
-          <span class="pill-tag tag-blue">Python</span>
-          <span class="pill-tag tag-blue">JS</span>
-          <span class="pill-tag tag-gray">MySQL</span>
-          <span class="pill-tag tag-purple">300+ Bookings</span>
-          <span class="pill-tag tag-gray">cPanel</span>
-        </div>
-
-        <h3 class="web-card-title">
-          Little-Heart-Pet-Shop
-        </h3>
-
-        <p class="web-card-desc">
-          Full-stack grooming platform. Engineered with Django and MySQL.
-          Successfully processed <strong>300+ live bookings</strong>.
-        </p>
-
-        <div>
-          <a
-            href="../TechCaseStudies/little-heart-case-study.html"
-            class="btn btn-outline-light rounded-pill px-4 py-2"
-            style="font-weight: 600; font-size: 0.9rem"
-          
-          >
-            View Case Study →
-          </a>
-        </div>
-      </div>
+        View Case Study →
+      </a>
 
     </div>
   </div>
 
 
-  <!-- PROJECT 2 — TEXT LEFT / IMAGE RIGHT -->
-  <div class="col-lg-12" data-aos="fade-up" id="bytesoft">
-    <div class="web-card flex-lg-row-reverse">
+  <!-- PROJECT 2 -->
+  <div class="web-card" data-aos="fade-up" id="bytesoft">
+    <div class="web-card-content">
 
-      <!-- IMAGE -->
-      <div
-        class="web-card-image"
-        style="
-          width: 100%;
-          max-width: 580px;
-          height: auto;
-          min-height: 380px;
-        "
+      <div class="mb-3">
+        <span class="pill-tag tag-blue tech-outline">JavaScript</span>
+        <span class="pill-tag tag-blue tech-outline">HTML/CSS</span>
+        <span class="pill-tag tag-purple tech-outline">UI/UX</span>
+        <span class="pill-tag tag-gray tech-outline">Live Production</span>
+        <span class="pill-tag tag-blue tech-outline">50+ Clients</span>
+      </div>
+
+      <h3 class="web-card-title">
+        Bytesoft-Nepal
+      </h3>
+
+      <p class="web-card-desc">
+        Official digital storefront for a premier IT agency. Engineered a
+        B2B conversion-optimized UI and dynamic service funnels showcasing
+        <strong>250+ successful projects</strong>.
+      </p>
+
+      <a
+        href="../TechCaseStudies/bytesoft-nepal-case-study.html"
+        class="btn btn-outline-light rounded-pill px-4 py-2"
+        style="font-weight: 600; font-size: 0.9rem"
       >
-        <img
-          src="../Images/Bytesoft-Nepal.png"
-          alt="Bytesoft Nepal"
-          style="
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            object-fit: cover;
-            display: block;
-          "
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="web-card-content justify-content-center px-lg-5">
-        <div class="mb-3">
-          <span class="pill-tag tag-blue">JavaScript</span>
-          <span class="pill-tag tag-blue">HTML/CSS</span>
-          <span class="pill-tag tag-purple">UI/UX</span>
-          <span class="pill-tag tag-gray">Live Production</span>
-          <span class="pill-tag tag-blue">50+ Clients</span>
-        </div>
-
-        <h3 class="web-card-title">
-          Bytesoft-Nepal
-        </h3>
-
-        <p class="web-card-desc">
-          Official digital storefront for a premier IT agency. Engineered a
-          B2B conversion-optimized UI and dynamic service funnels showcasing
-          <strong>250+ successful projects</strong>.
-        </p>
-
-        <div>
-          <a
-            href="../TechCaseStudies/bytesoft-nepal-case-study.html"
-            class="btn btn-outline-light rounded-pill px-4 py-2"
-            style="font-weight: 600; font-size: 0.9rem"
-          
-          >
-            View Case Study →
-          </a>
-        </div>
-      </div>
+        View Case Study →
+      </a>
 
     </div>
   </div>
 
 
-  <!-- PROJECT 3 — IMAGE LEFT / TEXT RIGHT -->
-  <div class="col-lg-12" data-aos="fade-up" id="himalayanpeaks">
-    <div class="web-card flex-lg-row">
+  <!-- PROJECT 3 -->
+  <div class="web-card" data-aos="fade-up" id="himalayanpeaks">
+    <div class="web-card-content">
 
-      <!-- IMAGE -->
-      <div
-        class="web-card-image"
-        style="
-          width: 100%;
-          max-width: 580px;
-          height: auto;
-          min-height: 380px;
-        "
+      <div class="mb-3">
+        <span class="pill-tag tag-blue tech-outline">Python</span>
+        <span class="pill-tag tag-purple tech-outline">Machine Learning</span>
+        <span class="pill-tag tag-blue tech-outline">Scikit-Learn</span>
+        <span class="pill-tag tag-gray tech-outline">450+ Peaks</span>
+      </div>
+
+      <h3 class="web-card-title">
+        HimalayanPeaks-Recommendation-System
+      </h3>
+
+      <p class="web-card-desc">
+        ML-driven discovery engine for mountaineers. Utilizes K-Means
+        clustering and Cosine Similarity to suggest peaks based on
+        technical profiles.
+      </p>
+
+      <a
+        href="../TechCaseStudies/himalayan-peaks-ai.html"
+        class="btn btn-outline-light rounded-pill px-4 py-2"
+        style="font-weight: 600; font-size: 0.9rem"
       >
-        <img
-          src="../Images/Himalayan-Peaks.png"
-          alt="Himalayan Peaks Recommendation System"
-          style="
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            object-fit: cover;
-            display: block;
-          "
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="web-card-content justify-content-center px-lg-5">
-        <div class="mb-3">
-          <span class="pill-tag tag-blue">Python</span>
-          <span class="pill-tag tag-purple">Machine Learning</span>
-          <span class="pill-tag tag-blue">Scikit-Learn</span>
-          <span class="pill-tag tag-gray">450+ Peaks</span>
-        </div>
-
-        <h3 class="web-card-title">
-          HimalayanPeaks-Recommendation-System
-        </h3>
-
-        <p class="web-card-desc">
-          ML-driven discovery engine for mountaineers. Utilizes K-Means
-          clustering and Cosine Similarity to suggest peaks based on
-          technical profiles.
-        </p>
-
-        <div>
-          <a
-            href="../TechCaseStudies/himalayan-peaks-ai.html"
-            class="btn btn-outline-light rounded-pill px-4 py-2"
-            style="font-weight: 600; font-size: 0.9rem"
-          
-          >
-            View Case Study →
-          </a>
-        </div>
-      </div>
+        View Case Study →
+      </a>
 
     </div>
   </div>
 
 
-  <!-- PROJECT 4 — TEXT LEFT / IMAGE RIGHT -->
-  <div class="col-lg-12" data-aos="fade-up" id="xdezo">
-    <div class="web-card flex-lg-row-reverse">
+  <!-- PROJECT 4 -->
+  <div class="web-card" data-aos="fade-up" id="xdezo">
+    <div class="web-card-content">
 
-      <!-- IMAGE -->
-      <div
-        class="web-card-image"
-        style="
-          width: 100%;
-          max-width: 580px;
-          height: auto;
-          min-height: 380px;
-        "
+      <div class="mb-3">
+        <span class="pill-tag tag-blue tech-outline">Python</span>
+        <span class="pill-tag tag-purple tech-outline">BotFather API</span>
+        <span class="pill-tag tag-gray tech-outline">MySQL</span>
+        <span class="pill-tag tag-blue tech-outline">PythonAnywhere</span>
+      </div>
+
+      <h3 class="web-card-title">
+        Xdezo-Telegram-Bot
+      </h3>
+
+      <p class="web-card-desc">
+        Automated enrollment and information bot for Xdezo Technology.
+        Integrated with MySQL for student data management and certificate
+        verification.
+      </p>
+
+      <a
+        href="../TechCaseStudies/xdezo-bot-case-study.html"
+        class="btn btn-outline-light rounded-pill px-4 py-2"
+        style="font-weight: 600; font-size: 0.9rem"
       >
-        <img
-          src="../Images/Xdezo-Telegram-Bot.png"
-          alt="Xdezo Telegram Bot"
-          style="
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            object-fit: cover;
-            display: block;
-          "
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="web-card-content justify-content-center px-lg-5">
-        <div class="mb-3">
-          <span class="pill-tag tag-blue">Python</span>
-          <span class="pill-tag tag-purple">BotFather API</span>
-          <span class="pill-tag tag-gray">MySQL</span>
-          <span class="pill-tag tag-blue">PythonAnywhere</span>
-        </div>
-
-        <h3 class="web-card-title">
-          Xdezo-Telegram-Bot
-        </h3>
-
-        <p class="web-card-desc">
-          Automated enrollment and information bot for Xdezo Technology.
-          Integrated with MySQL for student data management and certificate
-          verification.
-        </p>
-
-        <div>
-          <a
-            href="../TechCaseStudies/xdezo-bot-case-study.html"
-            class="btn btn-outline-light rounded-pill px-4 py-2"
-            style="font-weight: 600; font-size: 0.9rem"
-          
-          >
-            View Case Study →
-          </a>
-        </div>
-      </div>
+        View Case Study →
+      </a>
 
     </div>
   </div>
 
 
-  <!-- PROJECT 5 — IMAGE LEFT / TEXT RIGHT -->
-  <div class="col-lg-12" data-aos="fade-up" id="informatics">
-    <div class="web-card flex-lg-row">
+  <!-- PROJECT 5 -->
+  <div class="web-card" data-aos="fade-up" id="informatics">
+    <div class="web-card-content">
 
-      <!-- IMAGE -->
-      <div
-        class="web-card-image"
-        style="
-          width: 100%;
-          max-width: 580px;
-          height: auto;
-          min-height: 380px;
-        "
+      <div class="mb-3">
+        <span class="pill-tag tag-blue tech-outline">Python</span>
+        <span class="pill-tag tag-blue tech-outline">Django</span>
+        <span class="pill-tag tag-gray tech-outline">MySQL</span>
+        <span class="pill-tag tag-purple tech-outline">851 Users</span>
+        <span class="pill-tag tag-blue tech-outline">Khalti</span>
+      </div>
+
+      <h3 class="web-card-title">
+        Informatics-Cafeteria-System
+      </h3>
+
+      <p class="web-card-desc">
+        Full-stack digital dining platform for 850+ users. Integrated
+        Khalti for digital payments, real-time order tracking, and social
+        group-ordering logic.
+      </p>
+
+      <a
+        href="../TechCaseStudies/informatics-cafeteria-case-study.html"
+        class="btn btn-outline-light rounded-pill px-4 py-2"
+        style="font-weight: 600; font-size: 0.9rem"
       >
-        <img
-          src="../Images/Informatics-Cafeteria-System.png"
-          alt="Informatics Cafeteria System"
-          style="
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            object-fit: cover;
-            display: block;
-          "
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="web-card-content justify-content-center px-lg-5">
-        <div class="mb-3">
-          <span class="pill-tag tag-blue">Python</span>
-          <span class="pill-tag tag-blue">Django</span>
-          <span class="pill-tag tag-gray">MySQL</span>
-          <span class="pill-tag tag-purple">851 Users</span>
-          <span class="pill-tag tag-blue">Khalti</span>
-        </div>
-
-        <h3 class="web-card-title">
-          Informatics-Cafeteria-System
-        </h3>
-
-        <p class="web-card-desc">
-          Full-stack digital dining platform for 850+ users. Integrated
-          Khalti for digital payments, real-time order tracking, and social
-          group-ordering logic.
-        </p>
-
-        <div>
-          <a
-            href="../TechCaseStudies/informatics-cafeteria-case-study.html"
-            class="btn btn-outline-light rounded-pill px-4 py-2"
-            style="font-weight: 600; font-size: 0.9rem"
-          
-          >
-            View Case Study →
-          </a>
-        </div>
-      </div>
+        View Case Study →
+      </a>
 
     </div>
   </div>
+
+</div>
 
 </div>
       </div>
