@@ -241,9 +241,11 @@
   justify-content: center;
   flex-shrink: 0;
   overflow: visible;
+  transform: translateX(60px);
 }
 
 .brand-icon img {
+  
   width: 460%;
   height: 460%;
   object-fit: contain;
@@ -251,23 +253,7 @@
   transform: translateY(8px);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .brand-icon img {
-    width: 300%;
-    height: 300%;
-    transform: translate(15px, 5px);
-  }
-}
 
-/* Small mobile */
-@media (max-width: 480px) {
-  .brand-icon img {
-    width: 250%;
-    height: 250%;
-    transform: translate(20px, 4px);
-  }
-}
       .nav-pill-active {
         background-color: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2246,12 +2232,9 @@
                 class="navbar-brand mb-4 d-inline-flex"
                 style="font-size: 1.5rem"
               >
-                <div class="brand-icon">B</div>
-                <span class="text-white"
-                  >biwash<span style="color: var(--primary-blue-glow)"
-                    >.creatives</span
-                  ></span
-                >
+                <div class="brand-icon">
+  <img src="Images/BiwashLogo.png" alt="Biwash Creatives Logo">
+</div>
               </div>
 
               <ul class="footer-box-list">
@@ -2319,7 +2302,7 @@
 
         <!-- Bottom Line -->
         <div class="footer-bottom">
-          <div>© 2026 biwash.creatives (P) Ltd. All rights reserved.</div>
+          <div>© 2026 biwash.creatives. All rights reserved.</div>
           <div><a href="#">Privacy</a></div>
         </div>
       </div>
