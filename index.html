@@ -233,18 +233,22 @@
         align-items: center;
         gap: 10px;
       }
-      .brand-icon {
-        width: 32px;
-        height: 32px;
-        background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        font-size: 0.9rem;
-        color: #fff;
-      }
+.brand-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-icon img {
+  width: 460%;
+  height: 460%;
+  object-fit: contain;
+  display: block;
+  transform: translateY(8px);
+}
       .nav-pill-active {
         background-color: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -852,6 +856,9 @@
       .footer-bottom a:hover {
         color: #fff;
       }
+
+
+      
     </style>
   </head>
   <body>
@@ -874,12 +881,9 @@
           data-aos="fade-down"
           data-aos-duration="800"
         >
-          <div class="brand-icon">B</div>
-          <span
-            >biwash<span style="color: var(--primary-blue-glow)"
-              >.creatives</span
-            ></span
-          >
+         <div class="brand-icon">
+  <img src="Images/BiwashLogo.png" alt="Biwash Creatives Logo">
+</div>
         </a>
 
         <button
