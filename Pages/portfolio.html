@@ -420,99 +420,115 @@
         transform: translateY(0);
       }
 
-      /* SECTION 2: VIDEO & MOTION */
-      .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 24px;
-      }
-      @media (max-width: 576px) {
-        .video-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+ /* SECTION 2: VIDEO & MOTION */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-      .video-card {
-        border-radius: 20px;
-        overflow: hidden;
-        position: relative;
-        border: 1px solid var(--bg-card-border);
-        aspect-ratio: 16/9;
-        background: #000;
-        cursor: pointer;
-        transition:
-          transform 0.3s ease,
-          border-color 0.3s ease;
-      }
-      .video-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(45, 125, 246, 0.4);
-      }
-      .video-thumbnail {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.6;
-        transition:
-          opacity 0.4s ease,
-          transform 0.8s ease;
-        background: repeating-linear-gradient(
-          45deg,
-          #0a0d14,
-          #0a0d14 10px,
-          #121824 10px,
-          #121824 20px
-        );
-      }
-      .video-card:hover .video-thumbnail {
-        opacity: 0.35;
-        transform: scale(1.05);
-      }
+@media (max-width: 991px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-      .play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1);
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 2;
-      }
-      .play-btn svg {
-        width: 22px;
-        height: 22px;
-        fill: #fff;
-        margin-left: 3px;
-      }
-      .video-card:hover .play-btn {
-        background: var(--primary-blue);
-        transform: translate(-50%, -50%) scale(1.1);
-        border-color: var(--primary-blue-glow);
-        box-shadow: 0 0 30px rgba(45, 125, 246, 0.6);
-      }
+@media (max-width: 576px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-      .video-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
-        z-index: 2;
-      }
-      .video-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin: 0 0 4px 0;
-      }
+.video-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--bg-card-border);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(45, 125, 246, 0.4);
+}
+
+/* FULL-SIZE YOUTUBE IFRAME */
+.video-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  z-index: 1;
+}
+
+/* Thumbnail background */
+.video-thumbnail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  transition:
+    opacity 0.4s ease,
+    transform 0.8s ease;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #0a0d14,
+    #0a0d14 10px,
+    #121824 10px,
+    #121824 20px
+  );
+
+  z-index: 0;
+}
+
+.video-card:hover .video-thumbnail {
+  opacity: 0.35;
+  transform: scale(1.05);
+}
+
+/* Play button overlay */
+
+
+
+.video-card:hover .play-btn {
+  background: var(--primary-blue);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: var(--primary-blue-glow);
+  box-shadow: 0 0 30px rgba(45, 125, 246, 0.6);
+}
+
+/* Video information */
+.video-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95),
+    transparent
+  );
+
+  z-index: 4;
+}
+
+.video-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
 
       /* SECTION 3: WEB DEVELOPMENT */
       .web-card {
@@ -1318,85 +1334,283 @@
           </p>
         </div>
 
-        <div class="video-grid">
-          <!-- Video 1 -->
-          <div class="video-card" data-aos="fade-up">
-            <div class="video-thumbnail"></div>
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-            <div class="video-info">
-              <div class="mb-2">
-                <span class="pill-tag tag-blue">Premiere Pro</span>
-                <span class="pill-tag tag-purple">Color Grade</span>
-              </div>
-              <h3 class="video-title">Grooming Process Documentary Reel</h3>
-              <p class="text-muted mb-0" style="font-size: 0.85rem">
-                Client: Little Heart Pet Shop
-              </p>
-            </div>
-          </div>
+       <div class="video-grid">
 
-          <!-- Video 2 -->
-          <div class="video-card" data-aos="fade-up" data-aos-delay="100">
-            <div
-              class="video-thumbnail"
-              style="
-                background: repeating-linear-gradient(
-                  -45deg,
-                  #101420,
-                  #101420 10px,
-                  #182030 10px,
-                  #182030 20px
-                );
-              "
-            ></div>
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-            <div class="video-info">
-              <div class="mb-2">
-                <span class="pill-tag tag-cyan">After Effects</span>
-                <span class="pill-tag tag-yellow">Motion Graphics</span>
-              </div>
-              <h3 class="video-title">High-Retention UGC Product Reel</h3>
-              <p class="text-muted mb-0" style="font-size: 0.85rem">
-                Agency: Swopu Creation
-              </p>
-            </div>
-          </div>
+  <!-- Video 1: Swastha Nepal App Ads -->
+  <div class="video-card" data-aos="fade-up">
 
-          <!-- Video 3 -->
-          <div class="video-card" data-aos="fade-up" data-aos-delay="200">
-            <div
-              class="video-thumbnail"
-              style="
-                background: repeating-linear-gradient(
-                  90deg,
-                  #1a1020,
-                  #1a1020 10px,
-                  #20142a 10px,
-                  #20142a 20px
-                );
-              "
-            ></div>
-            <div class="play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-            <div class="video-info">
-              <div class="mb-2">
-                <span class="pill-tag tag-purple">VN Editor</span>
-                <span class="pill-tag tag-blue">Cinematic</span>
-              </div>
-              <h3 class="video-title">Brutalist Personal Showreel</h3>
-              <p class="text-muted mb-0" style="font-size: 0.85rem">
-                Personal Brand
-              </p>
-            </div>
-          </div>
-        </div>
+    <div class="video-thumbnail"></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/QxeMaMVpHvk?rel=0&modestbranding=1"
+      title="Swastha Nepal App Ads"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-blue">Premiere Pro</span>
+        <span class="pill-tag tag-cyan">After Effects</span>
+        <span class="pill-tag tag-purple">Ad Campaign</span>
       </div>
-    </section>
+
+      <h3 class="video-title">Swastha Nepal App Ads</h3>
+    </div>
+
+  </div>
+
+
+  <!-- Video 2: Nepal Tourism -->
+  <div
+    class="video-card"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+
+    <div
+      class="video-thumbnail"
+      style="
+        background: repeating-linear-gradient(
+          -45deg,
+          #101420,
+          #101420 10px,
+          #182030 10px,
+          #182030 20px
+        );
+      "
+    ></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/19tyb-XhXls?rel=0&modestbranding=1"
+      title="Nepal Tourism"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-cyan">After Effects</span>
+        <span class="pill-tag tag-blue">Premiere Pro</span>
+        <span class="pill-tag tag-yellow">Motion Graphics</span>
+      </div>
+
+      <h3 class="video-title">Nepal Tourism</h3>
+    </div>
+
+  </div>
+
+
+  <!-- Video 3: Premium Grooming Cut -->
+  <div
+    class="video-card"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+
+    <div
+      class="video-thumbnail"
+      style="
+        background: repeating-linear-gradient(
+          -45deg,
+          #101420,
+          #101420 10px,
+          #182030 10px,
+          #182030 20px
+        );
+      "
+    ></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/cZwj9T71W58?rel=0&modestbranding=1"
+      title="Dog Grooming YT Short"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-cyan">YouTube Shorts</span>
+        <span class="pill-tag tag-yellow">Visual Rhythm</span>
+      </div>
+
+      <h3 class="video-title">Premium Grooming Cut</h3>
+    </div>
+
+  </div>
+
+
+  <!-- Video 4: Cinematic Storytelling -->
+  <div
+    class="video-card"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+
+    <div
+      class="video-thumbnail"
+      style="
+        background: repeating-linear-gradient(
+          -45deg,
+          #101420,
+          #101420 10px,
+          #182030 10px,
+          #182030 20px
+        );
+      "
+    ></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/dmyWQE0ZiSg?rel=0&modestbranding=1"
+      title="Cinematic Storytelling"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-cyan">After Effects</span>
+        <span class="pill-tag tag-yellow">Premiere Pro</span>
+      </div>
+
+      <h3 class="video-title">Cinematic Storytelling</h3>
+    </div>
+
+  </div>
+
+
+  <!-- Video 5: WorldLink Commercial -->
+  <div
+    class="video-card"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+
+    <div
+      class="video-thumbnail"
+      style="
+        background: repeating-linear-gradient(
+          -45deg,
+          #101420,
+          #101420 10px,
+          #182030 10px,
+          #182030 20px
+        );
+      "
+    ></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/rco9nOsDHO0?rel=0&modestbranding=1"
+      title="WorldLink Commercial"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-cyan">After Effects</span>
+        <span class="pill-tag tag-yellow">Motion Graphics</span>
+      </div>
+
+      <h3 class="video-title">WorldLink Commercial</h3>
+    </div>
+
+  </div>
+
+
+  <!-- Video 6: Nepal: Mountains & Culture -->
+  <div
+    class="video-card"
+    data-aos="fade-up"
+    data-aos-delay="200"
+  >
+
+    <div
+      class="video-thumbnail"
+      style="
+        background: repeating-linear-gradient(
+          90deg,
+          #1a1020,
+          #1a1020 10px,
+          #20142a 10px,
+          #20142a 20px
+        );
+      "
+    ></div>
+
+    <!-- FULL SIZE YOUTUBE VIDEO -->
+    <iframe
+      src="https://www.youtube.com/embed/3uE-oPOA6-E?rel=0&modestbranding=1"
+      title="Nepal: Mountains & Culture"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+
+    <!-- PLAY BUTTON OVERLAY -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- VIDEO INFO -->
+    <div class="video-info">
+      <div class="mb-2">
+        <span class="pill-tag tag-purple">Premiere Pro</span>
+        <span class="pill-tag tag-blue">Cinematic</span>
+      </div>
+
+      <h3 class="video-title">Nepal: Mountains & Culture</h3>
+    </div>
+
+  </div>
+
+</div>
 
     <!-- SECTION 3: WEBSITES (WEB DEVELOPMENT) -->
     <section
