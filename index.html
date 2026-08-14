@@ -863,6 +863,40 @@
       }
 
 
+
+            /* Whats app icon CSS  */
+.whatsapp_float {
+position: fixed;
+width: 60px;
+height: 60px;
+bottom: 20px;
+right: 20px;
+background-color: #25d366;
+color: #fff;
+border-radius: 50px;
+text-align: center;
+font-size: 30px;
+box-shadow: 2px 2px 3px #999;
+z-index: 100;
+}
+.whatsapp-icon {
+margin-top: 16px;
+}
+
+/*Whatsapp  for mobile */
+@media screen and (max-width: 767px) {
+.whatsapp-icon {
+margin-top: 10px;
+}
+.whatsapp_float {
+width: 40px;
+height: 40px;
+bottom: 20px;
+right: 10px;
+font-size: 22px;
+}
+
+
       
     </style>
   </head>
@@ -2122,6 +2156,12 @@
       </div>
     </section>
 
+
+    
+<!-- Adding Whatsapp In the website -->
+<a href="https://wa.me/9817158500" target="_blank" class="whatsapp_float"
+  ><i class="fa-brands fa-whatsapp whatsapp-icon"></i
+></a>
     <!-- REDESIGNED FOOTER (Matching image reference) -->
     <section class="footer-cta-section" data-aos="fade-in">
       <div class="container">
@@ -2190,7 +2230,9 @@
               </div>
             </div>
           </div>
+          
         </div>
+        
 
         <!-- Bottom Line -->
         <div class="footer-bottom">
