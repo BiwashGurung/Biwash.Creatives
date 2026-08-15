@@ -348,20 +348,27 @@
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
       }
 
-      .design-img-placeholder {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(145deg, #121824 0%, #0a0c10 100%);
-        color: rgba(255, 255, 255, 0.25);
-        font-family: var(--font-heading);
-        font-weight: 800;
-        text-align: center;
-        padding: 20px;
-        position: relative;
-      }
+.design-img-placeholder {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background: #0a0c10;
+}
+
+.design-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.5s ease;
+}
+
+.design-item:hover .design-img {
+  transform: scale(1.02);
+}
       .design-img-placeholder span {
         font-size: 0.75rem;
         letter-spacing: 2px;
@@ -1003,7 +1010,7 @@
       <div class="design-item h-tall" data-aos="zoom-in-up">
         <div class="design-img-placeholder h-100">
           <img
-            src="../Images/design-01.png"
+            src="../Images/AirpodsMax.jpg"
             alt="Angee's Snacks Brand Identity"
             class="design-img"
           />
@@ -1028,7 +1035,7 @@
       >
         <div class="design-img-placeholder h-100">
           <img
-            src="../Images/design-02.png"
+            src="../Images/UrbanNet_Lobby.png"
             alt="Urban Nest Logo Mark Study"
             class="design-img"
           />
