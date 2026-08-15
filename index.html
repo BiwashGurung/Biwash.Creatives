@@ -63,6 +63,10 @@
     <link rel="icon" type="Biwash Logo" href="Images/BiwashLogo.png" />
 
     <style>
+
+      * {
+  box-sizing: border-box;
+}
       :root {
         --bg-dark: #06080d;
         --bg-card: #0e121b;
@@ -86,6 +90,14 @@
         overflow-x: hidden;
         letter-spacing: -0.01em;
       }
+
+      /* Prevent horizontal scrolling on mobile */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
       h1,
       h2,
