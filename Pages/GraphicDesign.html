@@ -43,6 +43,8 @@
       --text-muted: #94a3b8;
 
       --font-heading: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+      
     }
 
 
@@ -1245,6 +1247,138 @@
     }
 
 
+      /* NEW CUSTOM FOOTER STYLES */
+            .footer-cta-section {
+              padding: 100px 0 40px 0;
+              border-top: 1px solid var(--bg-card-border);
+              background-color: var(--bg-dark);
+              position: relative;
+              z-index: 10;
+            }
+            .footer-badge {
+              display: inline-block;
+              padding: 6px 16px;
+              border-radius: 30px;
+              font-size: 0.8rem;
+              font-weight: 500;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: #fff;
+              background: rgba(255, 255, 255, 0.02);
+              margin-bottom: 24px;
+            }
+            .footer-cta-title {
+              font-size: calc(2.2rem + 1.5vw);
+              font-weight: 800;
+              font-family: var(--font-heading);
+              letter-spacing: -0.02em;
+            }
+            .text-glow-project {
+              position: relative;
+              display: inline-block;
+              color: #fff; /* Keep solid white on top */
+            }
+            .text-glow-project::after {
+              content: "Project";
+              position: absolute;
+              left: 0;
+              top: 15px; /* Offset to create the shadow/duplicate effect */
+              color: rgba(45, 125, 246, 0.25); /* Faint blue glow text underneath */
+              z-index: -1;
+              filter: blur(1px);
+            }
+            .btn-white-pill {
+              background-color: #fff;
+              color: #000;
+              font-weight: 600;
+              font-size: 0.95rem;
+              padding: 12px 32px;
+              border-radius: 30px;
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+            }
+            .btn-white-pill:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+              color: #000;
+            }
+
+            .footer-box {
+              background: linear-gradient(
+                180deg,
+                rgba(20, 25, 35, 0.8) 0%,
+                rgba(14, 18, 27, 0.6) 100%
+              );
+              border: 1px solid rgba(255, 255, 255, 0.08);
+              border-radius: 20px;
+              padding: 40px;
+              margin-bottom: 30px;
+            }
+            .footer-box-list {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              color: var(--text-muted);
+              font-size: 0.9rem;
+              font-weight: 500;
+            }
+            .footer-box-list li {
+              margin-bottom: 10px;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
+            .footer-links {
+              display: flex;
+              gap: 20px;
+              flex-wrap: wrap;
+            }
+            .footer-links a {
+              color: #fff;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 0.9rem;
+              transition: color 0.3s;
+            }
+            .footer-links a:hover {
+              color: var(--primary-blue-glow);
+            }
+            .social-icons a {
+              color: #fff;
+              margin-left: 15px;
+              transition: color 0.3s;
+            }
+            .social-icons a:hover {
+              color: var(--primary-blue-glow);
+            }
+            .footer-slogan {
+              font-size: 0.95rem;
+              color: var(--text-muted);
+            }
+            .footer-bottom {
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: wrap;
+              gap: 15px;
+              font-size: 0.85rem;
+              color: var(--text-muted);
+            }
+            .footer-bottom a {
+              color: var(--text-muted);
+              text-decoration: none;
+              transition: color 0.3s;
+            }
+            .footer-bottom a:hover {
+              color: #fff;
+            }
+
+
+
+              
+
     
 
 
@@ -2188,7 +2322,132 @@
        FINAL CTA
   ======================================================== -->
 
+ <section class="footer-cta-section" data-aos="fade-in">
+      <div class="container">
+        <!-- Call to Action Top Elements -->
+        <div class="mb-4">
+          <span class="footer-badge">Connect with me</span>
+        </div>
 
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-5 gap-4"
+        >
+          <h2 class="footer-cta-title mb-0">
+            Let's talk about your
+            <span class="text-glow-project" style="color: #3887fe"
+              >Project</span
+            >
+          </h2>
+         <a
+  href="mailto:biwash.creatives@gmail.com"
+  class="btn-blue-pill"
+  style="
+    display: inline-block;
+    color: #ffffff;
+    background-color: #3887fe;
+    border: 1px solid #3887fe;
+    border-radius: 44px;
+    padding: 7px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(56, 135, 254, 0.25);
+  "
+>
+  Contact Me
+</a>
+        </div>
+
+        <!-- Main Footer Information Box -->
+        <div class="footer-box">
+          <div class="row gy-4">
+            <!-- Left side: Logo & List -->
+            <div class="col-md-6">
+              <div
+                class="navbar-brand mb-4 d-inline-flex"
+                style="font-size: 1.5rem"
+              >
+                <div class="brand-icon">
+                    <img
+                      src="../Images/biwash logo with tag line.png"
+                      alt="Biwash Creatives Logo"
+                    />
+                </div>
+              </div>
+
+              <ul class="footer-box-list">
+                <li>• Creative ideas, thoughtfully designed 🎨</li>
+                <li>• Purpose-driven digital solutions 💻</li>
+                <li>• Built to make an impact 🚀</li>
+              </ul>
+            </div>
+
+            <!-- Right side: Links, Socials & Slogan -->
+            <div
+              class="col-md-6 d-flex flex-column align-items-start align-items-md-end justify-content-between"
+            >
+              <div class="footer-links mb-4">
+                <a href="#home">Home</a>
+                <a href="Pages/about.html">About</a>
+                <a href="Pages/portfolio.html">Portfolio</a>
+                <a href="Pages/contact.html">Contact</a>
+              </div>
+
+              <div class="social-icons mb-4 d-flex gap-2">
+                <a
+                  href="https://www.linkedin.com/in/biwashgurung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon-btn"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/BiwashGurung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon-btn"
+                  aria-label="GitHub"
+                >
+                  <svg
+                    width="15"
+                    height="15"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                    />
+                  </svg>
+                </a>
+              </div>
+
+              <div
+                class="footer-slogan mt-md-auto text-md-end text-start text-white"
+              >
+                <strong style="color: #3887fe">Think</strong> Creatively.
+                <strong style="color: #3887fe">Build</strong> Purposefully.
+                <strong style="color: #3887fe">Create</strong> Impact.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="footer-bottom">
+          <div>© 2026 biwash.creatives. All rights reserved.</div>
+        </div>
+      </div>
+    </section>
 
 
 
