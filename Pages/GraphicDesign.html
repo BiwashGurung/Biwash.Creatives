@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Biwash Creatives - Graphic Designing</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- AOS Animation CSS -->
+  <link
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+
+    /* =========================================================
+       ROOT VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg-color: #06080d;
+      --bg-card: rgba(14, 18, 27, 0.75);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+
+      --primary-blue-glow: #3887fe;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+
+      --font-heading: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--primary-blue-glow);
+      color: #fff;
+    }
+
+
+    /* =========================================================
+       ANIMATION KEYFRAMES
+    ========================================================= */
+
+    @keyframes floatBrowser {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes glowMove {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(80px, 30px) scale(1.12);
+      }
+
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        box-shadow: 0 0 0 rgba(56, 135, 254, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 25px rgba(56, 135, 254, 0.18);
+      }
+    }
+
+    @keyframes arrowBounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(4px);
+      }
+    }
+
+    @keyframes lineGrow {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 70px;
+      }
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .custom-navbar {
+      background-color: rgba(6, 8, 13, 0.75) !important;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      border-bottom: 1px solid var(--bg-card-border);
+
+      padding: 16px 0;
+
+      transition: all 0.3s ease;
+
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      overflow: visible;
+
+      transform: translateX(60px);
+    }
+
+    .brand-icon img {
+      width: 460%;
+      height: 460%;
+
+      object-fit: contain;
+      display: block;
+
+      transform: translateY(8px);
+    }
+
+    .nav-pill-active {
+      background-color: rgba(255, 255, 255, 0.08);
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      border-radius: 30px;
+
+      color: #fff !important;
+
+      padding: 6px 18px !important;
+    }
+
+    .nav-link {
+      color: var(--text-muted) !important;
+
+      font-weight: 500;
+      font-size: 0.88rem;
+
+      padding: 6px 14px !important;
+
+      transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff !important;
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       DROPDOWN
+    ========================================================= */
+
+    .custom-dropdown {
+      background-color: rgba(6, 8, 13, 0.9);
+
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+
+      border: 1px solid var(--bg-card-border);
+
+      border-radius: 12px;
+
+      padding: 8px 0;
+
+      margin-top: 0;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .custom-dropdown .dropdown-item {
+      color: var(--text-muted);
+
+      font-family: var(--font-heading);
+
+      font-size: 0.88rem;
+      font-weight: 500;
+
+      padding: 10px 20px;
+
+      transition: all 0.3s ease;
+    }
+
+    .custom-dropdown .dropdown-item:hover {
+      color: #fff;
+
+      background-color: rgba(255, 255, 255, 0.1);
+
+      padding-left: 25px;
+    }
+
+    @media (min-width: 992px) {
+
+      .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+
+        animation: fadeDropdown 0.3s ease forwards;
+      }
+
+      .navbar .dropdown-menu::before {
+        content: '';
+
+        position: absolute;
+
+        top: -15px;
+        left: 0;
+
+        width: 100%;
+        height: 15px;
+
+        background: transparent;
+      }
+    }
+
+    @keyframes fadeDropdown {
+
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================================================
+       HERO SECTION
+    ========================================================= */
+
+    .service-hero {
+      background:
+        linear-gradient(
+          135deg,
+          #0b111d 0%,
+          #06080d 100%
+        );
+
+      border-bottom: 1px solid var(--bg-card-border);
+
+      color: #fff;
+
+      padding: 150px 0 110px;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .service-hero::before {
+      content: '';
+
+      position: absolute;
+
+      top: 5%;
+      left: -10%;
+
+      width: 500px;
+      height: 500px;
+
+      background: rgba(56, 135, 254, 0.08);
+
+      filter: blur(120px);
+
+      border-radius: 50%;
+
+      z-index: 0;
+
+      animation: glowMove 10s ease-in-out infinite;
+    }
+
+    .service-hero::after {
+      content: '';
+
+      position: absolute;
+
+      right: -15%;
+      bottom: -30%;
+
+      width: 450px;
+      height: 450px;
+
+      background: rgba(56, 135, 254, 0.035);
+
+      filter: blur(100px);
+
+      border-radius: 50%;
+
+      animation: glowMove 12s ease-in-out infinite reverse;
+    }
+
+    .hero-content {
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      display: inline-block;
+
+      padding: 7px 17px;
+
+      background: rgba(56, 135, 254, 0.1);
+
+      color: var(--primary-blue-glow);
+
+      border-radius: 50px;
+
+      font-size: 0.82rem;
+      font-weight: 600;
+
+      letter-spacing: 0.8px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 20px;
+
+      border: 1px solid rgba(56, 135, 254, 0.2);
+
+      box-shadow:
+        0 0 25px rgba(56, 135, 254, 0.05);
+
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-weight: 800;
+
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+
+      line-height: 1.05;
+
+      margin-bottom: 22px;
+
+      letter-spacing: -0.04em;
+    }
+
+    .hero-title span {
+      color: var(--primary-blue-glow);
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+
+      line-height: 1.8;
+
+      margin-bottom: 35px;
+
+      color: var(--text-muted);
+
+      max-width: 600px;
+    }
+
+    .btn-schedule {
+      background-color: var(--primary-blue-glow);
+
+      color: #fff;
+
+      font-weight: 600;
+
+      padding: 13px 30px;
+
+      border-radius: 50px;
+
+      text-decoration: none;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      transition: all 0.35s ease;
+
+      box-shadow:
+        0 4px 25px rgba(56, 135, 254, 0.4);
+    }
+
+    .btn-schedule:hover {
+      background-color: #2570eb;
+
+      color: #fff;
+
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 8px 35px rgba(56, 135, 254, 0.6);
+    }
+
+    .btn-schedule i {
+      animation: arrowBounce 1.8s ease-in-out infinite;
+    }
+
+
+    /* =========================================================
+       BROWSER MOCKUP
+    ========================================================= */
+
+    .browser-wrapper {
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .browser-card {
+      background: var(--bg-card);
+
+      backdrop-filter: blur(16px);
+
+      border: 1px solid var(--bg-card-border);
+
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.6);
+
+      transition:
+        border-color 0.3s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
+      animation: floatBrowser 6s ease-in-out infinite;
+    }
+
+    .browser-card:hover {
+      border-color: rgba(56, 135, 254, 0.4);
+
+      transform: translateY(-7px) scale(1.01);
+
+      box-shadow:
+        0 35px 65px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(56, 135, 254, 0.08);
+
+      animation-play-state: paused;
+    }
+
+    .browser-header {
+      background: #040609;
+
+      padding: 12px 16px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #ff5f56;
+    }
+
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+
+    .dot-green {
+      background: #27c93f;
+    }
+
+    .browser-url {
+      margin-left: 12px;
+
+      font-size: 0.72rem;
+
+      color: var(--text-muted);
+
+      background: rgba(255, 255, 255, 0.04);
+
+      padding: 3px 14px;
+
+      border-radius: 12px;
+
+      font-family: monospace;
+    }
+
+    .browser-body {
+      padding: 35px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(56, 135, 254, 0.07) 0%,
+          transparent 70%
+        );
+    }
+
+    .browser-body img {
+      max-width: 100%;
+
+      height: auto;
+
+      border-radius: 8px;
+
+      transition: transform 0.5s ease;
+    }
+
+    .browser-card:hover .browser-body img {
+      transform: scale(1.025);
+    }
+
+
+    /* =========================================================
+       SHARED SECTION
+    ========================================================= */
+
+    .section {
+      position: relative;
+
+      padding: 110px 0;
+
+      overflow: hidden;
+    }
+
+    .section-dark {
+      background-color: var(--bg-color);
+    }
+
+    .section-alt {
+      background:
+        linear-gradient(
+          180deg,
+          #06080d 0%,
+          #080c14 100%
+        );
+    }
+
+    .section-container {
+      max-width: 1000px;
+
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      font-weight: 800;
+
+      font-size: clamp(2rem, 4vw, 2.7rem);
+
+      text-align: center;
+
+      margin-bottom: 16px;
+
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading span {
+      color: var(--primary-blue-glow);
+    }
+
+    .section-intro {
+      text-align: center;
+
+      color: var(--text-muted);
+
+      line-height: 1.8;
+
+      margin-bottom: 55px;
+
+      font-size: 1rem;
+
+      max-width: 720px;
+
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .heading-line {
+      width: 70px;
+      height: 3px;
+
+      background: var(--primary-blue-glow);
+
+      border-radius: 50px;
+
+      margin: 0 auto 25px;
+
+      box-shadow:
+        0 0 15px rgba(56, 135, 254, 0.5);
+    }
+
+
+    /* =========================================================
+       DESIGN DISCIPLINE
+    ========================================================= */
+
+    .features-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid var(--bg-card-border);
+
+      padding: 30px;
+
+      border-radius: 16px;
+
+      transition:
+        all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--primary-blue-glow),
+          transparent
+        );
+
+      transform: scaleX(0);
+
+      transition: transform 0.45s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(56, 135, 254, 0.4);
+
+      background: rgba(18, 24, 36, 0.9);
+
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(56, 135, 254, 0.04);
+    }
+
+    .feature-card.full-width {
+      grid-column: span 2;
+    }
+
+    .feature-icon-box {
+      width: 50px;
+      height: 50px;
+
+      background: rgba(56, 135, 254, 0.1);
+
+      border: 1px solid rgba(56, 135, 254, 0.25);
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      color: var(--primary-blue-glow);
+
+      font-size: 1.1rem;
+
+      margin-bottom: 20px;
+
+      transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .feature-card:hover .feature-icon-box {
+      transform: scale(1.1) rotate(6deg);
+
+      background: rgba(56, 135, 254, 0.16);
+
+      box-shadow:
+        0 0 20px rgba(56, 135, 254, 0.15);
+    }
+
+    .feature-title {
+      color: #fff;
+
+      font-weight: 700;
+
+      font-size: 1.15rem;
+
+      margin-bottom: 9px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+
+      font-size: 0.9rem;
+
+      line-height: 1.7;
+
+      margin: 0;
+    }
+
+
+    /* =========================================================
+       TOOLS & SOFTWARE
+    ========================================================= */
+
+    .tools-section {
+      padding: 110px 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          #080c14 0%,
+          #06080d 100%
+        );
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .tools-section::before {
+      content: '';
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      right: -150px;
+      top: 20%;
+
+      background: rgba(56, 135, 254, 0.05);
+
+      filter: blur(100px);
+
+      border-radius: 50%;
+    }
+
+    .tools-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid var(--bg-card-border);
+
+      border-radius: 16px;
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .tool-card::after {
+      content: '';
+
+      position: absolute;
+
+      width: 100px;
+      height: 100px;
+
+      top: -50px;
+      right: -50px;
+
+      background: rgba(56, 135, 254, 0.08);
+
+      border-radius: 50%;
+
+      transition: transform 0.5s ease;
+    }
+
+    .tool-card:hover::after {
+      transform: scale(2.2);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(56, 135, 254, 0.4);
+
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .tool-icon {
+      width: 58px;
+      height: 58px;
+
+      margin: 0 auto 18px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background: rgba(56, 135, 254, 0.1);
+
+      border: 1px solid rgba(56, 135, 254, 0.2);
+
+      color: var(--primary-blue-glow);
+
+      font-size: 1.3rem;
+
+      position: relative;
+
+      z-index: 1;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .tool-card:hover .tool-icon {
+      transform: translateY(-3px) scale(1.08);
+
+      box-shadow:
+        0 0 25px rgba(56, 135, 254, 0.18);
+    }
+
+    .tool-name {
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      color: #fff;
+
+      margin-bottom: 6px;
+
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .tool-type {
+      font-size: 0.78rem;
+
+      color: var(--text-muted);
+
+      position: relative;
+
+      z-index: 1;
+    }
+
+
+    /* =========================================================
+       INDUSTRIES & EXPERIENCE
+    ========================================================= */
+
+    .industries-section {
+      padding: 110px 0;
+
+      background-color: var(--bg-color);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .industries-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 22px;
+
+      margin-bottom: 55px;
+    }
+
+    .industry-card {
+      background: var(--bg-card);
+
+      border: 1px solid var(--bg-card-border);
+
+      border-radius: 18px;
+
+      padding: 32px;
+
+      transition:
+        all 0.4s ease;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .industry-card::before {
+      content: '';
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 3px;
+      height: 100%;
+
+      background: var(--primary-blue-glow);
+
+      transform: scaleY(0);
+
+      transform-origin: bottom;
+
+      transition: transform 0.4s ease;
+    }
+
+    .industry-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .industry-card:hover {
+      transform: translateY(-7px);
+
+      border-color: rgba(56, 135, 254, 0.35);
+
+      background: rgba(18, 24, 36, 0.88);
+
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .industry-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 13px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(56, 135, 254, 0.1);
+
+      border: 1px solid rgba(56, 135, 254, 0.22);
+
+      color: var(--primary-blue-glow);
+
+      margin-bottom: 20px;
+
+      transition: transform 0.35s ease;
+    }
+
+    .industry-card:hover .industry-icon {
+      transform: scale(1.08) rotate(5deg);
+    }
+
+    .industry-title {
+      color: #fff;
+
+      font-size: 1.2rem;
+
+      font-weight: 700;
+
+      margin-bottom: 15px;
+    }
+
+    .industry-list {
+      color: var(--text-muted);
+
+      font-size: 0.88rem;
+
+      line-height: 1.9;
+
+      margin: 0;
+    }
+
+
+    /* =========================================================
+       REAL ESTATE EXPERIENCE
+    ========================================================= */
+
+    .experience-card {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(56, 135, 254, 0.1),
+          rgba(14, 18, 27, 0.8)
+        );
+
+      border: 1px solid rgba(56, 135, 254, 0.2);
+
+      border-radius: 20px;
+
+      padding: 40px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 40px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .experience-card::before {
+      content: '';
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      right: -120px;
+      top: -140px;
+
+      background: rgba(56, 135, 254, 0.08);
+
+      border-radius: 50%;
+
+      filter: blur(20px);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(56, 135, 254, 0.4);
+
+      box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .experience-content {
+      position: relative;
+
+      z-index: 1;
+
+      flex: 1;
+    }
+
+    .experience-label {
+      color: var(--primary-blue-glow);
+
+      text-transform: uppercase;
+
+      font-size: 0.75rem;
+
+      font-weight: 700;
+
+      letter-spacing: 1.2px;
+
+      margin-bottom: 10px;
+    }
+
+    .experience-title {
+      color: #fff;
+
+      font-size: 1.45rem;
+
+      font-weight: 700;
+
+      margin-bottom: 12px;
+    }
+
+    .experience-description {
+      color: var(--text-muted);
+
+      font-size: 0.9rem;
+
+      line-height: 1.7;
+
+      margin: 0;
+
+      max-width: 650px;
+    }
+
+    .experience-stats {
+      display: flex;
+
+      align-items: center;
+
+      gap: 35px;
+
+      position: relative;
+
+      z-index: 1;
+    }
+
+    .experience-stat {
+      text-align: center;
+
+      min-width: 100px;
+    }
+
+    .stat-number {
+      display: block;
+
+      color: var(--primary-blue-glow);
+
+      font-size: 2.7rem;
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      display: block;
+
+      color: var(--text-muted);
+
+      font-size: 0.72rem;
+
+      line-height: 1.4;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.6px;
+    }
+
+    .stat-divider {
+      width: 1px;
+
+      height: 55px;
+
+      background: var(--bg-card-border);
+    }
+
+
+    
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 991px) {
+
+      .brand-icon {
+        transform: translateX(0);
+      }
+
+      .brand-icon img {
+        width: 350%;
+        height: 350%;
+      }
+
+      .service-hero {
+        padding-top: 130px;
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .experience-stats {
+        width: 100%;
+
+        justify-content: flex-start;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+
+      .service-hero {
+        padding: 125px 0 80px;
+      }
+
+      .section,
+      .tools-section,
+      .industries-section {
+        padding: 80px 0;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card.full-width {
+        grid-column: span 1;
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .industries-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-card {
+        padding: 30px 25px;
+      }
+
+      .experience-stats {
+        gap: 20px;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+    }
+
+
+    @media (max-width: 575px) {
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .browser-body {
+        padding: 20px;
+      }
+
+      .browser-url {
+        font-size: 0.6rem;
+
+        padding: 3px 8px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-stats {
+        width: 100%;
+
+        justify-content: space-between;
+
+        gap: 10px;
+      }
+
+      .experience-stat {
+        min-width: auto;
+      }
+
+      .stat-number {
+        font-size: 1.9rem;
+      }
+
+      .stat-label {
+        font-size: 0.62rem;
+      }
+
+      .stat-divider {
+        height: 45px;
+      }
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION ACCESSIBILITY
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       NAVBAR
+  ======================================================== -->
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark custom-navbar">
+
+    <div class="container">
+
+      <a
+        class="navbar-brand"
+        href="index.html"
+        data-aos="fade-down"
+        data-aos-duration="800">
+
+        <div class="brand-icon">
+
+          <img
+            src="Images/BiwashLogo.png"
+            alt="Biwash Creatives Logo"
+            onerror="this.src='https://via.placeholder.com/150x150?text=Logo'">
+
+        </div>
+
+      </a>
+
+
+      <button
+        class="navbar-toggler border-0"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#agencyNav">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="agencyNav">
+
+        <ul
+          class="navbar-nav gap-1"
+          data-aos="fade-down"
+          data-aos-duration="800"
+          data-aos-delay="100">
+
+          <li class="nav-item">
+            <a
+              class="nav-link nav-pill-active"
+              href="#home">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="Pages/about.html">
+              About
+            </a>
+          </li>
+
+
+          <!-- SERVICES -->
+
+          <li class="nav-item dropdown">
+
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="servicesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+
+              Services
+
+            </a>
+
+            <ul
+              class="dropdown-menu custom-dropdown"
+              aria-labelledby="servicesDropdown">
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#">
+                  Graphic Design
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#">
+                  Web Dev
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#">
+                  UI/UX Design
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#">
+                  Video Editing
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="Pages/portfolio.html">
+
+              Portfolio
+
+            </a>
+
+          </li>
+
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="Pages/contact.html">
+
+              Contact
+
+            </a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <section
+    class="service-hero"
+    id="home">
+
+    <div class="container">
+
+      <div class="row align-items-center gy-5">
+
+
+        <!-- HERO TEXT -->
+
+        <div
+          class="col-lg-6 pe-lg-5 hero-content"
+          data-aos="fade-right"
+          data-aos-duration="900">
+
+          <span
+            class="hero-subtitle"
+            data-aos="fade-down"
+            data-aos-duration="700">
+
+            Brand Identity & Visuals
+
+          </span>
+
+
+          <h1
+            class="hero-title"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="100">
+
+            Graphic
+            <span>Designing</span>
+
+          </h1>
+
+
+          <p
+            class="hero-desc"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="200">
+
+            Top-notch graphic design solutions engineered to make
+            your brand stand out. From custom logomarks and
+            comprehensive brand identity systems to high-converting
+            promotional assets.
+
+          </p>
+
+
+          <a
+            href="#details"
+            class="btn-schedule"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="300">
+
+            Explore Capabilities
+
+            <i class="fa-solid fa-arrow-down"></i>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- BROWSER MOCKUP -->
+
+        <div
+          class="col-lg-6 browser-wrapper"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          data-aos-delay="200">
+
+          <div class="browser-card">
+
+            <div class="browser-header">
+
+              <span class="browser-dot dot-red"></span>
+
+              <span class="browser-dot dot-yellow"></span>
+
+              <span class="browser-dot dot-green"></span>
+
+              <span class="browser-url">
+                biwashcreatives.io/graphics
+              </span>
+
+            </div>
+
+
+            <div class="browser-body">
+
+              <img
+                src="https://illustrations.popsy.co/amber/graphic-design.svg"
+                alt="Graphic Design Preview">
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       DESIGN DISCIPLINE
+  ======================================================== -->
+
+  <section
+    id="details"
+    class="section section-dark">
+
+    <div class="container section-container">
+
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="800">
+
+        <div class="heading-line"></div>
+
+        <h2 class="section-heading">
+
+          Design Discipline &
+
+          <span>Process</span>
+
+        </h2>
+
+
+        <p class="section-intro">
+
+          Every visual asset starts with comprehensive research
+          into your vision and target audience, resulting in
+          clean, memorable, and high-impact executions.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="features-grid">
+
+
+        <!-- LOGO DESIGN -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="100">
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-pen-nib"></i>
+
+          </div>
+
+          <h3 class="feature-title">
+            Logo Design
+          </h3>
+
+          <p class="feature-desc">
+
+            Unique, scalable, and timeless vector logomarks
+            built to anchor your brand identity.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- FLYER -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="180">
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+          </div>
+
+          <h3 class="feature-title">
+            Flyer & Promo Layouts
+          </h3>
+
+          <p class="feature-desc">
+
+            Engaging promotional graphics and digital materials
+            structured for optimal conversion.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- BRAND IDENTITY -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="260">
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+          </div>
+
+          <h3 class="feature-title">
+            Brand Identity Systems
+          </h3>
+
+          <p class="feature-desc">
+
+            Comprehensive style guides, color palettes,
+            and typography systems for seamless scaling.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- GRAPHICS -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="340">
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+          </div>
+
+          <h3 class="feature-title">
+            High-Quality Graphics
+          </h3>
+
+          <p class="feature-desc">
+
+            Pixel-perfect digital assets optimized for
+            social media, web banners, and print production.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- CREATIVE SOLUTIONS -->
+
+        <div
+          class="feature-card full-width"
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="420">
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+          </div>
+
+          <h3 class="feature-title">
+            Tailored Creative Solutions
+          </h3>
+
+          <p class="feature-desc">
+
+            Custom-tailored visual campaigns designed from
+            scratch to solve specific business goals and
+            capture your target demographic's attention.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       TOOLS & SOFTWARE
+  ======================================================== -->
+
+  <section class="tools-section">
+
+    <div class="container section-container">
+
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="800">
+
+        <div class="heading-line"></div>
+
+        <h2 class="section-heading">
+
+          Tools & <span>Software</span>
+
+        </h2>
+
+        <p class="section-intro">
+
+          Professional design tools I use to create polished,
+          creative, and high-quality visual solutions.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="tools-grid">
+
+
+        <!-- PHOTOSHOP -->
+
+        <div
+          class="tool-card"
+          data-aos="zoom-in"
+          data-aos-duration="700"
+          data-aos-delay="100">
+
+          <div class="tool-icon">
+
+            <i class="fa-solid fa-image"></i>
+
+          </div>
+
+          <div class="tool-name">
+            Adobe Photoshop
+          </div>
+
+          <div class="tool-type">
+            Image Editing & Design
+          </div>
+
+        </div>
+
+
+
+        <!-- ILLUSTRATOR -->
+
+        <div
+          class="tool-card"
+          data-aos="zoom-in"
+          data-aos-duration="700"
+          data-aos-delay="180">
+
+          <div class="tool-icon">
+
+            <i class="fa-solid fa-vector-square"></i>
+
+          </div>
+
+          <div class="tool-name">
+            Adobe Illustrator
+          </div>
+
+          <div class="tool-type">
+            Vector & Logo Design
+          </div>
+
+        </div>
+
+
+
+        <!-- INDESIGN -->
+
+        <div
+          class="tool-card"
+          data-aos="zoom-in"
+          data-aos-duration="700"
+          data-aos-delay="260">
+
+          <div class="tool-icon">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+          </div>
+
+          <div class="tool-name">
+            Adobe InDesign
+          </div>
+
+          <div class="tool-type">
+            Layout & Print Design
+          </div>
+
+        </div>
+
+
+
+        <!-- CANVA -->
+
+        <div
+          class="tool-card"
+          data-aos="zoom-in"
+          data-aos-duration="700"
+          data-aos-delay="340">
+
+          <div class="tool-icon">
+
+            <i class="fa-solid fa-palette"></i>
+
+          </div>
+
+          <div class="tool-name">
+            Canva
+          </div>
+
+          <div class="tool-type">
+            Digital Design & Content
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       INDUSTRIES & EXPERIENCE
+  ======================================================== -->
+
+  <section class="industries-section">
+
+    <div class="container section-container">
+
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="800">
+
+        <div class="heading-line"></div>
+
+        <h2 class="section-heading">
+
+          Industries & <span>Experience</span>
+
+        </h2>
+
+        <p class="section-intro">
+
+          Experience creating visual solutions across a wide
+          range of industries, businesses, and brand categories.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="industries-grid">
+
+
+        <!-- GRAPHIC DESIGN -->
+
+        <div
+          class="industry-card"
+          data-aos="fade-right"
+          data-aos-duration="800"
+          data-aos-delay="100">
+
+          <div class="industry-icon">
+
+            <i class="fa-solid fa-pen-ruler"></i>
+
+          </div>
+
+          <h3 class="industry-title">
+            Graphic Design
+          </h3>
+
+          <p class="industry-list">
+
+            Pet shops, pet treat businesses, technology companies,
+            sports, finance, real estate, music, local clubs,
+            travel agencies, healthcare, and restaurants.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- LOGO & BRAND IDENTITY -->
+
+        <div
+          class="industry-card"
+          data-aos="fade-left"
+          data-aos-duration="800"
+          data-aos-delay="180">
+
+          <div class="industry-icon">
+
+            <i class="fa-solid fa-bezier-curve"></i>
+
+          </div>
+
+          <h3 class="industry-title">
+            Logo & Brand Identity
+          </h3>
+
+          <p class="industry-list">
+
+            Pet shops, pet treat businesses, import/export
+            industries, IT companies, and co-living agencies.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- REAL ESTATE EXPERIENCE -->
+
+      <div
+        class="experience-card"
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-delay="150">
+
+
+        <div class="experience-content">
+
+          <div class="experience-label">
+            Real Estate Experience
+          </div>
+
+          <h3 class="experience-title">
+            Social Media Design for International Real Estate
+          </h3>
+
+          <p class="experience-description">
+
+            Designed 20+ social media templates for
+            3 international real estate companies,
+            creating consistent and engaging visual content
+            for their digital presence.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="experience-stats">
+
+
+          <div class="experience-stat">
+
+            <span class="stat-number">
+              20+
+            </span>
+
+            <span class="stat-label">
+              Social Media<br>
+              Templates
+            </span>
+
+          </div>
+
+
+          <div class="stat-divider"></div>
+
+
+          <div class="experience-stat">
+
+            <span class="stat-number">
+              3
+            </span>
+
+            <span class="stat-label">
+              International<br>
+              Companies
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       FINAL CTA
+  ======================================================== -->
+
+
+
+
+
+  <!-- =======================================================
+       SCRIPTS
+  ======================================================== -->
+
+  <!-- Bootstrap 5 JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+
+  <!-- AOS Animation JS -->
+  <script
+    src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+  </script>
+
+
+  <script>
+
+    /* =====================================================
+       AOS INITIALIZATION
+    ===================================================== */
+
+    AOS.init({
+
+      once: true,
+
+      offset: 80,
+
+      duration: 800,
+
+      easing: 'ease-out-cubic',
+
+      anchorPlacement: 'top-bottom'
+
+    });
+
+
+    /* =====================================================
+       REFRESH AOS AFTER PAGE LOAD
+    ===================================================== */
+
+    window.addEventListener('load', function () {
+
+      AOS.refresh();
+
+    });
+
+
+    /* =====================================================
+       NAVBAR SCROLL EFFECT
+    ===================================================== */
+
+    const navbar = document.querySelector('.custom-navbar');
+
+    window.addEventListener('scroll', function () {
+
+      if (window.scrollY > 40) {
+
+        navbar.style.backgroundColor =
+          'rgba(6, 8, 13, 0.92)';
+
+        navbar.style.padding = '11px 0';
+
+      } else {
+
+        navbar.style.backgroundColor =
+          'rgba(6, 8, 13, 0.75)';
+
+        navbar.style.padding = '16px 0';
+
+      }
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>

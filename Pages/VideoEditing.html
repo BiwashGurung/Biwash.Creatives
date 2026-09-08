@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Biwash Creatives - Video Editing</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+
+    /* =========================================
+       CUSTOM CSS VARIABLES
+       ========================================= */
+
+    :root {
+      --bg-color: #06080d;
+      --bg-card: rgba(14, 18, 27, 0.75);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --primary-blue-glow: #3887fe;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-heading: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+
+    /* =========================================
+       BODY
+       ========================================= */
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       NAVBAR
+       ========================================= */
+
+    .custom-navbar {
+      background-color: rgba(6, 8, 13, 0.75) !important;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-bottom: 1px solid var(--bg-card-border);
+      padding: 16px 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: visible;
+      transform: translateX(60px);
+    }
+
+    .brand-icon img {
+      width: 460%;
+      height: 460%;
+      object-fit: contain;
+      display: block;
+      transform: translateY(8px);
+    }
+
+    .nav-pill-active {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      color: #fff !important;
+      padding: 6px 18px !important;
+    }
+
+    .nav-link {
+      color: var(--text-muted) !important;
+      font-weight: 500;
+      font-size: 0.88rem;
+      padding: 6px 14px !important;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff !important;
+    }
+
+
+    /* =========================================
+       DROPDOWN
+       ========================================= */
+
+    .custom-dropdown {
+      background-color: rgba(6, 8, 13, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 12px;
+      padding: 8px 0;
+      margin-top: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .custom-dropdown .dropdown-item {
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .custom-dropdown .dropdown-item:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+
+    /* =========================================
+       DESKTOP DROPDOWN HOVER
+       ========================================= */
+
+    @media (min-width: 992px) {
+
+      .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        animation: fadeDropdown 0.3s ease forwards;
+      }
+
+      .navbar .dropdown-menu::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background: transparent;
+      }
+
+    }
+
+    @keyframes fadeDropdown {
+
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =========================================
+       HERO
+       ========================================= */
+
+    .service-hero {
+      background: linear-gradient(135deg, #0b111d 0%, #06080d 100%);
+      border-bottom: 1px solid var(--bg-card-border);
+      color: #fff;
+      padding: 130px 0 90px 0;
+      position: relative;
+    }
+
+    .service-hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(56, 135, 254, 0.07);
+      filter: blur(120px);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(56, 135, 254, 0.1);
+      color: var(--primary-blue-glow);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      border: 1px solid rgba(56, 135, 254, 0.2);
+    }
+
+    .hero-title {
+      font-weight: 800;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 35px;
+      color: var(--text-muted);
+    }
+
+    .btn-schedule {
+      background-color: var(--primary-blue-glow);
+      color: #fff;
+      font-weight: 600;
+      padding: 13px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 25px rgba(56, 135, 254, 0.4);
+    }
+
+    .btn-schedule:hover {
+      background-color: #2570eb;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(56, 135, 254, 0.6);
+    }
+
+
+    /* =========================================
+       BROWSER MOCKUP
+       ========================================= */
+
+    .browser-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.3s ease, transform 0.4s ease;
+    }
+
+    .browser-card:hover {
+      border-color: rgba(56, 135, 254, 0.35);
+      transform: translateY(-5px);
+    }
+
+    .browser-header {
+      background: #040609;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #ff5f56;
+    }
+
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+
+    .dot-green {
+      background: #27c93f;
+    }
+
+    .browser-url {
+      margin-left: 12px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 14px;
+      border-radius: 12px;
+      font-family: monospace;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .browser-body {
+      padding: 30px;
+      text-align: center;
+      background: radial-gradient(
+        circle at center,
+        rgba(56, 135, 254, 0.05) 0%,
+        transparent 70%
+      );
+    }
+
+    .browser-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+
+    /* =========================================
+       SERVICES SECTION
+       ========================================= */
+
+    .service-details {
+      padding: 100px 0;
+      background-color: var(--bg-color);
+    }
+
+    .details-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .details-title {
+      font-weight: 800;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .details-intro {
+      text-align: center;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* =========================================
+       FEATURE CARDS
+       ========================================= */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--bg-card-border);
+      padding: 28px;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 135, 254, 0.4);
+      background: rgba(18, 24, 36, 0.9);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .feature-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(56, 135, 254, 0.1);
+      border: 1px solid rgba(56, 135, 254, 0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue-glow);
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon-box {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    .feature-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+
+    /* =========================================
+       TOOLS & SOFTWARE
+       ========================================= */
+
+    .tools-section {
+      padding: 100px 0;
+      background-color: #080b12;
+      border-top: 1px solid var(--bg-card-border);
+      border-bottom: 1px solid var(--bg-card-border);
+    }
+
+    .tools-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tools-title {
+      font-weight: 800;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .tools-intro {
+      text-align: center;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--bg-card-border);
+      padding: 28px;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 0;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 135, 254, 0.4);
+      background: rgba(18, 24, 36, 0.9);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .tool-icon-box {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 18px;
+      background: rgba(56, 135, 254, 0.1);
+      border: 1px solid rgba(56, 135, 254, 0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue-glow);
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover .tool-icon-box {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    .tool-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .tool-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+
+    /* =========================================
+       WORKED ON / INDUSTRIES
+       ========================================= */
+
+    .experience-section {
+      padding: 100px 0;
+      background-color: var(--bg-color);
+    }
+
+    .experience-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .experience-title {
+      font-weight: 800;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .experience-intro {
+      text-align: center;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /*
+       IMPORTANT RESPONSIVE FIX
+
+       minmax(0, 1fr) prevents long content
+       from forcing the grid wider than the screen.
+    */
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .experience-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--bg-card-border);
+      padding: 28px;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Responsive protection */
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 135, 254, 0.4);
+      background: rgba(18, 24, 36, 0.9);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .experience-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .experience-icon-box {
+      width: 48px;
+      height: 48px;
+      background: rgba(56, 135, 254, 0.1);
+      border: 1px solid rgba(56, 135, 254, 0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue-glow);
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .experience-card:hover .experience-icon-box {
+      transform: scale(1.1) rotate(6deg);
+    }
+
+    .experience-card-title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+
+      /* Prevent overflow on small devices */
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .experience-card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+
+      /* Prevent overflow */
+      overflow-wrap: anywhere;
+    }
+
+
+    /* =========================================
+       TABLET
+       ========================================= */
+
+    @media (max-width: 991px) {
+
+      .brand-icon {
+        transform: translateX(0);
+      }
+
+      .custom-dropdown {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 15px;
+      }
+
+      .experience-container {
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+        box-sizing: border-box;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    /* =========================================
+       MOBILE
+       ========================================= */
+
+    @media (max-width: 767px) {
+
+      .service-hero {
+        padding: 110px 0 70px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-desc {
+        font-size: 0.95rem;
+      }
+
+      .browser-body {
+        padding: 20px;
+      }
+
+
+      /* Services */
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .feature-card {
+        grid-column: 1 / -1 !important;
+      }
+
+
+      /* Tools */
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+
+      /* Worked On */
+
+      .experience-section {
+        padding: 80px 0;
+      }
+
+      .experience-container {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .experience-card {
+        grid-column: 1 / -1 !important;
+        width: 100%;
+        padding: 24px;
+      }
+
+
+      /* Section headings */
+
+      .details-title,
+      .tools-title,
+      .experience-title {
+        font-size: 2rem;
+      }
+
+      .details-intro,
+      .tools-intro,
+      .experience-intro {
+        font-size: 0.95rem;
+      }
+
+    }
+
+
+    /* =========================================
+       SMALL MOBILE
+       ========================================= */
+
+    @media (max-width: 480px) {
+
+      .service-hero {
+        padding: 100px 0 60px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.72rem;
+      }
+
+      .btn-schedule {
+        padding: 11px 22px;
+        font-size: 0.9rem;
+      }
+
+
+      .service-details,
+      .tools-section {
+        padding: 70px 0;
+      }
+
+
+      .experience-section {
+        padding: 70px 0;
+      }
+
+      .experience-container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .experience-grid {
+        gap: 14px;
+      }
+
+      .experience-card {
+        padding: 22px;
+      }
+
+      .experience-card-title {
+        font-size: 1.05rem;
+      }
+
+      .experience-card-desc {
+        font-size: 0.85rem;
+      }
+
+      .details-title,
+      .tools-title,
+      .experience-title {
+        font-size: 1.8rem;
+      }
+
+    }
+
+
+    /* =========================================
+       EXTRA SMALL DEVICES
+       ========================================= */
+
+    @media (max-width: 360px) {
+
+      .experience-container {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .experience-card {
+        padding: 18px;
+      }
+
+      .experience-card-title {
+        font-size: 1rem;
+      }
+
+      .experience-card-desc {
+        font-size: 0.82rem;
+      }
+
+      .experience-icon-box {
+        width: 44px;
+        height: 44px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       NAVBAR
+       ========================================= -->
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark custom-navbar">
+
+    <div class="container">
+
+      <a
+        class="navbar-brand"
+        href="index.html"
+        data-aos="fade-down"
+        data-aos-duration="800"
+      >
+
+        <div class="brand-icon">
+
+          <img
+            src="Images/BiwashLogo.png"
+            alt="Biwash Creatives Logo"
+          >
+
+        </div>
+
+      </a>
+
+
+      <button
+        class="navbar-toggler border-0"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#agencyNav"
+      >
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="agencyNav"
+      >
+
+        <ul
+          class="navbar-nav gap-1"
+          data-aos="fade-down"
+          data-aos-duration="800"
+          data-aos-delay="100"
+        >
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="index.html"
+            >
+              Home
+            </a>
+
+          </li>
+
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="Pages/about.html"
+            >
+              About
+            </a>
+
+          </li>
+
+
+          <!-- SERVICES DROPDOWN -->
+
+          <li class="nav-item dropdown">
+
+            <a
+              class="nav-link dropdown-toggle nav-pill-active"
+              href="#"
+              id="servicesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Services
+            </a>
+
+
+            <ul
+              class="dropdown-menu custom-dropdown"
+              aria-labelledby="servicesDropdown"
+            >
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="graphic-design.html"
+                >
+                  Graphic Design
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                >
+                  Web Dev
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                >
+                  UI/UX Design
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="video-editing.html"
+                >
+                  Video Editing
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="Pages/portfolio.html"
+            >
+              Portfolio
+            </a>
+
+          </li>
+
+
+          <li class="nav-item">
+
+            <a
+              class="nav-link"
+              href="Pages/contact.html"
+            >
+              Contact
+            </a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================================
+       HERO
+       ========================================= -->
+
+  <section
+    class="service-hero"
+    id="home"
+  >
+
+    <div class="container">
+
+      <div class="row align-items-center gy-5">
+
+
+        <!-- HERO CONTENT -->
+
+        <div
+          class="col-lg-6 pe-lg-5 hero-content"
+          data-aos="fade-right"
+          data-aos-duration="800"
+        >
+
+          <span class="hero-subtitle">
+            Video Editing & Motion
+          </span>
+
+
+          <h1 class="hero-title">
+            Video Editing
+          </h1>
+
+
+          <p class="hero-desc">
+
+            Video editing services for engaging UGC reels,
+            motion graphics, short-form and long-form videos,
+            and web series post-production.
+
+          </p>
+
+
+          <a
+            href="#details"
+            class="btn-schedule"
+          >
+
+            Explore Capabilities
+
+            <i class="fa-solid fa-arrow-down"></i>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- BROWSER MOCKUP -->
+
+        <div
+          class="col-lg-6"
+          data-aos="fade-left"
+          data-aos-duration="800"
+          data-aos-delay="150"
+        >
+
+          <div class="browser-card">
+
+            <div class="browser-header">
+
+              <span class="browser-dot dot-red"></span>
+
+              <span class="browser-dot dot-yellow"></span>
+
+              <span class="browser-dot dot-green"></span>
+
+              <span class="browser-url">
+                biwashcreatives.io/video-editing
+              </span>
+
+            </div>
+
+
+            <div class="browser-body">
+
+              <div
+                style="
+                  padding: 60px 20px;
+                  color: var(--text-muted);
+                "
+              >
+
+                <i
+                  class="fa-solid fa-film"
+                  style="
+                    font-size: 3rem;
+                    color: var(--primary-blue-glow);
+                    margin-bottom: 15px;
+                  "
+                ></i>
+
+
+                <div
+                  style="
+                    font-weight: 600;
+                    color: #fff;
+                  "
+                >
+                  Video Editing
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       VIDEO EDITING SERVICES
+       ========================================= -->
+
+  <section
+    id="details"
+    class="service-details"
+  >
+
+    <div class="container details-container">
+
+
+      <div
+        class="text-center"
+        data-aos="fade-up"
+        data-aos-duration="700"
+      >
+
+        <h2 class="details-title">
+
+          Video Editing &
+
+          <span style="color: var(--primary-blue-glow);">
+            Post-Production
+          </span>
+
+        </h2>
+
+
+        <p class="details-intro">
+
+          Professional video editing services covering
+          UGC reels, motion graphics, short-form and
+          long-form video, and web series post-production.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="features-grid">
+
+
+        <!-- UGC REELS -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="50"
+        >
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+          </div>
+
+
+          <h3 class="feature-title">
+            UGC Reels
+          </h3>
+
+
+          <p class="feature-desc">
+            Editing for UGC reels and vertical
+            social content.
+          </p>
+
+        </div>
+
+
+
+        <!-- MOTION GRAPHICS -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="100"
+        >
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+          </div>
+
+
+          <h3 class="feature-title">
+            Motion Graphics
+          </h3>
+
+
+          <p class="feature-desc">
+            Motion graphics and animated visual
+            elements for video content.
+          </p>
+
+        </div>
+
+
+
+        <!-- SHORT FORM -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="150"
+        >
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-clapperboard"></i>
+
+          </div>
+
+
+          <h3 class="feature-title">
+            Short-Form Video
+          </h3>
+
+
+          <p class="feature-desc">
+            Short-form video editing for digital
+            and social content.
+          </p>
+
+        </div>
+
+
+
+        <!-- LONG FORM -->
+
+        <div
+          class="feature-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="200"
+        >
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-film"></i>
+
+          </div>
+
+
+          <h3 class="feature-title">
+            Long-Form Video
+          </h3>
+
+
+          <p class="feature-desc">
+            Long-form video editing for extended
+            content and productions.
+          </p>
+
+        </div>
+
+
+
+        <!-- WEB SERIES -->
+
+        <div
+          class="feature-card full-width"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="250"
+        >
+
+          <div class="feature-icon-box">
+
+            <i class="fa-solid fa-video"></i>
+
+          </div>
+
+
+          <h3 class="feature-title">
+            Web Series Post-Production
+          </h3>
+
+
+          <p class="feature-desc">
+            Post-production editing for web series
+            productions.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       TOOLS & SOFTWARE
+       ========================================= -->
+
+  <section class="tools-section">
+
+    <div class="container tools-container">
+
+
+      <div
+        class="text-center"
+        data-aos="fade-up"
+        data-aos-duration="700"
+      >
+
+        <h2 class="tools-title">
+
+          Tools &
+
+          <span style="color: var(--primary-blue-glow);">
+            Software
+          </span>
+
+        </h2>
+
+
+        <p class="tools-intro">
+
+          Professional tools used for video editing,
+          motion graphics, and audio enhancement.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="tools-grid">
+
+
+        <!-- PREMIERE PRO -->
+
+        <div
+          class="tool-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="50"
+        >
+
+          <div class="tool-icon-box">
+
+            <i class="fa-solid fa-scissors"></i>
+
+          </div>
+
+
+          <h3 class="tool-title">
+            Adobe Premiere Pro
+          </h3>
+
+
+          <p class="tool-desc">
+            Professional Video Editing
+          </p>
+
+        </div>
+
+
+
+        <!-- AFTER EFFECTS -->
+
+        <div
+          class="tool-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="100"
+        >
+
+          <div class="tool-icon-box">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+          </div>
+
+
+          <h3 class="tool-title">
+            Adobe After Effects
+          </h3>
+
+
+          <p class="tool-desc">
+            Motion Graphics
+          </p>
+
+        </div>
+
+
+
+        <!-- ADOBE PODCAST -->
+
+        <div
+          class="tool-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="150"
+        >
+
+          <div class="tool-icon-box">
+
+            <i class="fa-solid fa-microphone-lines"></i>
+
+          </div>
+
+
+          <h3 class="tool-title">
+            Adobe Podcast
+          </h3>
+
+
+          <p class="tool-desc">
+            Audio Enhancement
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       WORKED ON / INDUSTRIES
+       ========================================= -->
+
+  <section class="experience-section">
+
+    <div class="container experience-container">
+
+
+      <div
+        class="text-center"
+        data-aos="fade-up"
+        data-aos-duration="700"
+      >
+
+        <h2 class="experience-title">
+
+          Worked
+
+          <span style="color: var(--primary-blue-glow);">
+            On
+          </span>
+
+        </h2>
+
+
+        <p class="experience-intro">
+
+          Video editing experience across a range
+          of industries and productions.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="experience-grid">
+
+
+        <!-- TECHNOLOGY -->
+
+        <div
+          class="experience-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="50"
+        >
+
+          <div class="experience-icon-box">
+
+            <i class="fa-solid fa-microchip"></i>
+
+          </div>
+
+
+          <h3 class="experience-card-title">
+            Technology Companies
+          </h3>
+
+
+          <p class="experience-card-desc">
+            Video editing for technology companies.
+          </p>
+
+        </div>
+
+
+
+        <!-- REAL ESTATE -->
+
+        <div
+          class="experience-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="100"
+        >
+
+          <div class="experience-icon-box">
+
+            <i class="fa-solid fa-building"></i>
+
+          </div>
+
+
+          <h3 class="experience-card-title">
+            Real Estate
+          </h3>
+
+
+          <p class="experience-card-desc">
+            Video editing for real estate content.
+          </p>
+
+        </div>
+
+
+
+        <!-- TRAVEL -->
+
+        <div
+          class="experience-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="150"
+        >
+
+          <div class="experience-icon-box">
+
+            <i class="fa-solid fa-plane"></i>
+
+          </div>
+
+
+          <h3 class="experience-card-title">
+            Travel Agencies
+          </h3>
+
+
+          <p class="experience-card-desc">
+            Video editing for travel agency content.
+          </p>
+
+        </div>
+
+
+
+        <!-- LIFE INSURANCE -->
+
+        <div
+          class="experience-card"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="200"
+        >
+
+          <div class="experience-icon-box">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+          </div>
+
+
+          <h3 class="experience-card-title">
+            Life Insurance
+          </h3>
+
+
+          <p class="experience-card-desc">
+            Video editing for life insurance content.
+          </p>
+
+        </div>
+
+
+
+        <!-- WEB SERIES -->
+
+        <div
+          class="experience-card full-width"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="250"
+        >
+
+          <div class="experience-icon-box">
+
+            <i class="fa-solid fa-tv"></i>
+
+          </div>
+
+
+          <h3 class="experience-card-title">
+            Web Series Productions
+          </h3>
+
+
+          <p class="experience-card-desc">
+            Post-production editing for web series productions.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       BOOTSTRAP JS
+       ========================================= -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+
+  <!-- =========================================
+       AOS JS
+       ========================================= -->
+
+  <script
+    src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+  </script>
+
+
+  <script>
+
+    AOS.init({
+      once: true,
+      offset: 60
+    });
+
+  </script>
+
+
+</body>
+
+</html>
