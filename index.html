@@ -1250,6 +1250,996 @@
       </div>
     </section>
 
+    <!-- ==========================================================
+         3A. GLOBAL REACH / COUNTRIES I HAVE WORKED WITH
+         Interactive 360° globe
+    =========================================================== -->
+    <section id="global-reach" class="global-map-section">
+      <div class="global-map-grid"></div>
+      <div class="global-map-bg-glow global-map-bg-glow-1"></div>
+      <div class="global-map-bg-glow global-map-bg-glow-2"></div>
+
+      <div class="container position-relative global-map-container">
+        <div class="row align-items-center g-5">
+
+          <!-- LEFT CONTENT -->
+          <div class="col-lg-5">
+            <div class="global-map-copy" data-aos="fade-right" data-aos-duration="1000">
+              <span class="global-map-eyebrow">
+                <span class="global-map-eyebrow-line"></span>
+                GLOBAL REACH
+              </span>
+
+              <h2 class="global-map-title">
+                Countries I've
+                <span>Worked With</span>
+              </h2>
+
+              <p class="global-map-description">
+                A snapshot of the countries and markets represented across my
+                creative, digital, branding, development, and post-production work.
+              </p>
+
+              <div class="global-map-country-list">
+                <button type="button" class="global-map-country" data-country="Nepal">
+                  <span class="global-map-country-dot"></span>
+                  <span>Nepal</span>
+                  <span class="global-map-country-arrow">↗</span>
+                </button>
+
+                <button type="button" class="global-map-country" data-country="India">
+                  <span class="global-map-country-dot"></span>
+                  <span>India</span>
+                  <span class="global-map-country-arrow">↗</span>
+                </button>
+
+                <button type="button" class="global-map-country" data-country="Australia">
+                  <span class="global-map-country-dot"></span>
+                  <span>Australia</span>
+                  <span class="global-map-country-arrow">↗</span>
+                </button>
+
+                <button type="button" class="global-map-country" data-country="New Zealand">
+                  <span class="global-map-country-dot"></span>
+                  <span>New Zealand</span>
+                  <span class="global-map-country-arrow">↗</span>
+                </button>
+
+                <button type="button" class="global-map-country" data-country="Canada">
+                  <span class="global-map-country-dot"></span>
+                  <span>Canada</span>
+                  <span class="global-map-country-arrow">↗</span>
+                </button>
+              </div>
+
+              <div class="global-map-drag-hint">
+                <span class="global-map-drag-icon" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </span>
+                DRAG TO EXPLORE 360°
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT GLOBE -->
+          <div class="col-lg-7">
+            <div class="global-map-globe-wrap" id="globalMapGlobeWrap" data-aos="zoom-in" data-aos-duration="1200">
+              <div class="global-map-glow"></div>
+              <div class="global-map-orbit global-map-orbit-1"></div>
+              <div class="global-map-orbit global-map-orbit-2"></div>
+
+              <svg
+                id="globalMapGlobe"
+                viewBox="0 0 760 760"
+                preserveAspectRatio="xMidYMid meet"
+                role="img"
+                aria-label="Interactive 360 degree world globe"
+              ></svg>
+
+              <div class="global-map-status">
+                <span class="global-map-status-light"></span>
+                GLOBAL COVERAGE
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive globe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+    <!-- Interactive globe styles -->
+    <style>
+      .global-map-section {
+        position: relative;
+        overflow: hidden;
+        padding: 110px 0;
+        background:
+          radial-gradient(circle at 72% 50%, rgba(45, 125, 246, 0.08), transparent 28%),
+          radial-gradient(circle at 12% 85%, rgba(45, 125, 246, 0.045), transparent 22%),
+          linear-gradient(180deg, rgba(255,255,255,0.008), rgba(255,255,255,0));
+      }
+
+      .global-map-container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .global-map-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.23;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+        background-size: 64px 64px;
+        -webkit-mask-image: radial-gradient(circle at center, #000 18%, transparent 78%);
+        mask-image: radial-gradient(circle at center, #000 18%, transparent 78%);
+      }
+
+      .global-map-bg-glow {
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+        opacity: 0.08;
+      }
+
+      .global-map-bg-glow-1 {
+        top: -120px;
+        right: 5%;
+        background: #2d7df6;
+        animation: globalMapFloatOne 12s ease-in-out infinite alternate;
+      }
+
+      .global-map-bg-glow-2 {
+        bottom: -120px;
+        left: 5%;
+        background: var(--primary-blue);
+        animation: globalMapFloatTwo 15s ease-in-out infinite alternate;
+      }
+
+      .global-map-copy {
+        max-width: 570px;
+        font-family: var(--font-body);
+      }
+
+      .global-map-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        color: rgba(255,255,255,0.46);
+      }
+
+      .global-map-eyebrow-line {
+        width: 30px;
+        height: 1px;
+        background: rgba(255,255,255,0.65);
+        position: relative;
+      }
+
+      .global-map-eyebrow-line::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--primary-blue-glow);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 12px rgba(45,125,246,0.9);
+        animation: globalMapPulse 2s ease-in-out infinite;
+      }
+
+      .global-map-title {
+        margin: 0;
+        max-width: 540px;
+        font-family: var(--font-heading);
+        font-size: clamp(2.6rem, 5vw, 4.8rem);
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+        font-weight: 800;
+        color: var(--text-main);
+      }
+
+      .global-map-title span {
+        display: block;
+        color: var(--primary-blue-glow);
+        background: linear-gradient(135deg, #3887fe 0%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .global-map-description {
+        max-width: 500px;
+        margin: 28px 0 0;
+        color: var(--text-muted);
+        font-size: 0.98rem;
+        line-height: 1.85;
+      }
+
+      .global-map-country-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin-top: 30px;
+      }
+
+      .global-map-country {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.09);
+        background: rgba(14,18,27,0.72);
+        color: var(--text-muted);
+        font-family: var(--font-body);
+        font-size: 0.74rem;
+        font-weight: 600;
+        cursor: pointer;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: transform .3s ease, background .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease;
+      }
+
+      .global-map-country::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 -120%;
+        width: 80%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transform: skewX(-20deg);
+        transition: left .7s ease;
+      }
+
+      .global-map-country:hover::before,
+      .global-map-country.is-active::before {
+        left: 140%;
+      }
+
+      .global-map-country:hover,
+      .global-map-country.is-active {
+        transform: translateY(-3px);
+        background: rgba(45,125,246,0.09);
+        border-color: rgba(56,135,254,0.38);
+        color: var(--text-main);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.22), 0 0 24px rgba(45,125,246,0.10);
+      }
+
+      .global-map-country-dot {
+        width: 6px;
+        height: 6px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: var(--primary-blue-glow);
+        box-shadow: 0 0 7px var(--primary-blue-glow), 0 0 14px rgba(45,125,246,0.55);
+        animation: globalMapDotPulse 2.2s ease-in-out infinite;
+      }
+
+      .global-map-country:nth-child(2) .global-map-country-dot { animation-delay: .15s; }
+      .global-map-country:nth-child(3) .global-map-country-dot { animation-delay: .3s; }
+      .global-map-country:nth-child(4) .global-map-country-dot { animation-delay: .45s; }
+      .global-map-country:nth-child(5) .global-map-country-dot { animation-delay: .6s; }
+
+      .global-map-country-arrow {
+        color: rgba(148,163,184,0.45);
+        transition: transform .25s ease, color .25s ease;
+      }
+
+      .global-map-country:hover .global-map-country-arrow,
+      .global-map-country.is-active .global-map-country-arrow {
+        color: #fff;
+        transform: translate(2px,-2px);
+      }
+
+      .global-map-drag-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 36px;
+        color: rgba(148,163,184,0.42);
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        animation: globalMapHint 3s ease-in-out infinite;
+      }
+
+      .global-map-drag-icon {
+        display: flex;
+        gap: 3px;
+      }
+
+      .global-map-drag-icon span {
+        width: 3px;
+        height: 13px;
+        border-radius: 99px;
+        background: var(--primary-blue-glow);
+        animation: globalMapDragBars 1.2s ease-in-out infinite;
+      }
+
+      .global-map-drag-icon span:nth-child(2) { animation-delay: .15s; }
+      .global-map-drag-icon span:nth-child(3) { animation-delay: .30s; }
+
+      .global-map-globe-wrap {
+        position: relative;
+        width: min(720px, 100%);
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+      }
+
+      .global-map-globe-wrap:active { cursor: grabbing; }
+
+      #globalMapGlobe {
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+        filter: drop-shadow(0 0 30px rgba(45,125,246,0.10));
+      }
+
+      .global-map-globe-wrap:active #globalMapGlobe { cursor: grabbing; }
+
+      .global-map-glow {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(45,125,246,0.14), rgba(45,125,246,0.035) 48%, transparent 72%);
+        filter: blur(26px);
+        animation: globalMapGlobeBreath 5s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      .global-map-orbit {
+        position: absolute;
+        border: 1px solid rgba(148,163,184,0.12);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .global-map-orbit-1 {
+        width: 88%;
+        height: 30%;
+        transform: rotate(65deg);
+        animation: globalMapOrbit1 15s linear infinite;
+      }
+
+      .global-map-orbit-2 {
+        width: 75%;
+        height: 43%;
+        border-color: rgba(148,163,184,0.08);
+        transform: rotate(-40deg);
+        animation: globalMapOrbit2 21s linear infinite reverse;
+      }
+
+      .global-map-status {
+        position: absolute;
+        z-index: 10;
+        right: 5%;
+        bottom: 11%;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 13px;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        background: rgba(6,8,13,0.5);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        color: rgba(148,163,184,0.58);
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: .17em;
+        white-space: nowrap;
+      }
+
+      .global-map-status-light {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 7px var(--primary-blue-glow), 0 0 14px rgba(45,125,246,0.8);
+        animation: globalMapPulse 1.6s ease-in-out infinite;
+      }
+
+      /* Globe SVG */
+      .global-map-sphere {
+        fill: rgba(14,18,27,0.10);
+        stroke: rgba(148,163,184,0.22);
+        stroke-width: 1.2;
+      }
+
+      .global-map-grid-path {
+        fill: none;
+        stroke: rgba(148,163,184,0.13);
+        stroke-width: .7;
+      }
+
+      .global-map-land {
+        fill: rgba(255,255,255,0.018);
+        stroke: rgba(148,163,184,0.16);
+        stroke-width: .55;
+      }
+
+      .global-map-highlight {
+        fill: rgba(45,125,246,0.13);
+        stroke: var(--primary-blue-glow);
+        stroke-width: 1.65;
+        filter: url(#globalMapCountryGlow);
+        animation: globalMapCountryBlink 2.5s ease-in-out infinite;
+      }
+
+      .global-map-highlight-glow {
+        fill: none;
+        stroke: var(--primary-blue-glow);
+        stroke-width: 4.5;
+        opacity: .16;
+        filter: url(#globalMapStrongGlow);
+        animation: globalMapCountryGlow 2.5s ease-in-out infinite;
+      }
+
+      .global-map-marker {
+        fill: #fff;
+        filter: url(#globalMapMarkerGlow);
+      }
+
+      .global-map-marker-ring {
+        fill: none;
+        stroke: var(--primary-blue-glow);
+        stroke-width: 1;
+        animation: globalMapMarkerRing 2s ease-out infinite;
+      }
+
+      /* Animations */
+      @keyframes globalMapPulse {
+        0%,100% { opacity: .35; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes globalMapDotPulse {
+        0%,100% { transform: scale(.72); opacity: .42; }
+        50% { transform: scale(1.22); opacity: 1; }
+      }
+
+      @keyframes globalMapCountryBlink {
+        0%,100% { opacity: .42; }
+        45% { opacity: 1; }
+        58% { opacity: .62; }
+        78% { opacity: .94; }
+      }
+
+      @keyframes globalMapCountryGlow {
+        0%,100% { opacity: .10; stroke-width: 2; }
+        50% { opacity: .62; stroke-width: 5; }
+      }
+
+      @keyframes globalMapMarkerRing {
+        0% { opacity: .85; r: 4; }
+        100% { opacity: 0; r: 15; }
+      }
+
+      @keyframes globalMapGlobeBreath {
+        0%,100% { transform: scale(.92); opacity: .55; }
+        50% { transform: scale(1.07); opacity: 1; }
+      }
+
+      @keyframes globalMapOrbit1 {
+        from { transform: rotate(65deg); }
+        to { transform: rotate(425deg); }
+      }
+
+      @keyframes globalMapOrbit2 {
+        from { transform: rotate(-40deg); }
+        to { transform: rotate(320deg); }
+      }
+
+      @keyframes globalMapHint {
+        0%,100% { opacity: .32; }
+        50% { opacity: .8; }
+      }
+
+      @keyframes globalMapDragBars {
+        0%,100% { transform: scaleY(.65); opacity: .35; }
+        50% { transform: scaleY(1); opacity: 1; }
+      }
+
+      @keyframes globalMapFloatOne {
+        from { transform: translate(0,0) scale(1); }
+        to { transform: translate(-30px,50px) scale(1.08); }
+      }
+
+      @keyframes globalMapFloatTwo {
+        from { transform: translate(0,0) scale(1); }
+        to { transform: translate(45px,-35px) scale(.94); }
+      }
+
+      @media (max-width: 991px) {
+        .global-map-section {
+          padding: 95px 0;
+        }
+
+        .global-map-copy {
+          max-width: 720px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .global-map-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .global-map-country-list {
+          justify-content: center;
+        }
+
+        .global-map-drag-hint {
+          justify-content: center;
+        }
+
+        .global-map-globe-wrap {
+          width: min(680px, 100%);
+          max-width: 680px;
+          margin: 0 auto;
+          transform: none;
+        }
+
+        .global-map-globe-wrap #globalMapGlobe {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .global-map-section {
+          padding: 70px 0 75px;
+        }
+
+        .global-map-title {
+          font-size: clamp(2.35rem, 11vw, 3.4rem);
+        }
+
+        .global-map-eyebrow {
+          font-size: .62rem;
+          letter-spacing: .2em;
+        }
+
+        .global-map-description {
+          margin-top: 22px;
+          font-size: .84rem;
+          line-height: 1.75;
+        }
+
+        .global-map-country-list {
+          gap: 7px;
+          margin-top: 24px;
+        }
+
+        .global-map-country {
+          padding: 8px 10px;
+          font-size: .67rem;
+        }
+
+        .global-map-country-arrow {
+          display: none;
+        }
+
+        .global-map-globe-wrap {
+          width: 100%;
+          max-width: 520px;
+          margin: 24px auto 0;
+          transform: none;
+          overflow: visible;
+        }
+
+        .global-map-globe-wrap #globalMapGlobe {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .global-map-status {
+          right: 11%;
+          bottom: 9%;
+          font-size: .5rem;
+          padding: 8px 10px;
+        }
+
+        .global-map-drag-hint {
+          margin-top: 26px;
+          font-size: .55rem;
+        }
+      }
+
+      @media (max-width: 390px) {
+        .global-map-globe-wrap {
+          width: 100%;
+          max-width: 360px;
+          margin-top: 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .global-map-section *,
+        .global-map-section *::before,
+        .global-map-section *::after {
+          animation-duration: .001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .001ms !important;
+        }
+      }
+    </style>
+
+    <!-- Interactive globe logic -->
+    <script>
+      (function () {
+        "use strict";
+
+        const svg = d3.select("#globalMapGlobe");
+        if (svg.empty()) return;
+
+        const width = 760;
+        const height = 760;
+
+        const selectedCountries = {
+          Nepal: { id: "524", coordinates: [84.1240, 28.3949] },
+          India: { id: "356", coordinates: [78.9629, 20.5937] },
+          Australia: { id: "036", coordinates: [133.7751, -25.2744] },
+          "New Zealand": { id: "554", coordinates: [174.8860, -40.9006] },
+          Canada: { id: "124", coordinates: [-106.3468, 56.1304] }
+        };
+
+        const defs = svg.append("defs");
+
+        const countryGlow = defs
+          .append("filter")
+          .attr("id", "globalMapCountryGlow")
+          .attr("x", "-100%")
+          .attr("y", "-100%")
+          .attr("width", "300%")
+          .attr("height", "300%");
+
+        countryGlow
+          .append("feGaussianBlur")
+          .attr("stdDeviation", "2.2")
+          .attr("result", "blur");
+
+        const countryMerge = countryGlow.append("feMerge");
+        countryMerge.append("feMergeNode").attr("in", "blur");
+        countryMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+        const strongGlow = defs
+          .append("filter")
+          .attr("id", "globalMapStrongGlow")
+          .attr("x", "-100%")
+          .attr("y", "-100%")
+          .attr("width", "300%")
+          .attr("height", "300%");
+
+        strongGlow
+          .append("feGaussianBlur")
+          .attr("stdDeviation", "5");
+
+        const markerGlow = defs
+          .append("filter")
+          .attr("id", "globalMapMarkerGlow")
+          .attr("x", "-200%")
+          .attr("y", "-200%")
+          .attr("width", "400%")
+          .attr("height", "400%");
+
+        markerGlow
+          .append("feGaussianBlur")
+          .attr("stdDeviation", "3");
+
+        const globeGroup = svg.append("g");
+
+        const projection = d3
+          .geoOrthographic()
+          .translate([width / 2, height / 2])
+          .scale(300)
+          .clipAngle(90);
+
+        const path = d3.geoPath().projection(projection);
+
+        globeGroup
+          .append("path")
+          .datum({ type: "Sphere" })
+          .attr("class", "global-map-sphere")
+          .attr("d", path);
+
+        const graticule = d3.geoGraticule().step([15, 15]);
+
+        globeGroup
+          .append("path")
+          .datum(graticule())
+          .attr("class", "global-map-grid-path")
+          .attr("d", path);
+
+        let rotation = [-20, -8, 0];
+        let dragging = false;
+        let autoRotate = true;
+        let previousX = 0;
+        let previousY = 0;
+        let velocityX = 0;
+        let velocityY = 0;
+        let countryFeatures = [];
+        let animationFrame = null;
+        let autoResumeTimer = null;
+
+        function countryIsVisible(coordinates) {
+          const center = projection.invert([width / 2, height / 2]);
+          return !!center && d3.geoDistance(coordinates, center) < Math.PI / 2;
+        }
+
+        function updateMarkers() {
+          Object.entries(selectedCountries).forEach(([name, data]) => {
+            const marker = globeGroup.select(
+              `.global-map-marker-group[data-country="${CSS.escape(name)}"]`
+            );
+
+            const point = projection(data.coordinates);
+            const visible = countryIsVisible(data.coordinates);
+
+            if (!point || !marker.size()) return;
+
+            marker
+              .attr("transform", `translate(${point[0]},${point[1]})`)
+              .style("opacity", visible ? 1 : 0);
+          });
+        }
+
+        function updateHighlightVisibility() {
+          Object.entries(selectedCountries).forEach(([name, data]) => {
+            const visible = countryIsVisible(data.coordinates);
+            globeGroup
+              .select(`.global-map-highlight[data-country="${CSS.escape(name)}"]`)
+              .style("opacity", visible ? null : 0);
+            globeGroup
+              .select(`.global-map-highlight-glow[data-country="${CSS.escape(name)}"]`)
+              .style("opacity", visible ? null : 0);
+          });
+        }
+
+        function render() {
+          projection.rotate(rotation);
+          globeGroup.selectAll("path").attr("d", path);
+          updateMarkers();
+          updateHighlightVisibility();
+        }
+
+        function animate() {
+          if (autoRotate && !dragging) {
+            rotation[0] += 0.018;
+          }
+
+          if (!dragging && (Math.abs(velocityX) > 0.001 || Math.abs(velocityY) > 0.001)) {
+            rotation[0] += velocityX;
+            rotation[1] -= velocityY;
+            rotation[1] = Math.max(-85, Math.min(85, rotation[1]));
+            velocityX *= 0.94;
+            velocityY *= 0.94;
+
+            if (Math.abs(velocityX) < 0.001) velocityX = 0;
+            if (Math.abs(velocityY) < 0.001) velocityY = 0;
+          }
+
+          render();
+          animationFrame = requestAnimationFrame(animate);
+        }
+
+        function rotateToCountry(name) {
+          const target = selectedCountries[name];
+          if (!target) return;
+
+          const startLon = rotation[0];
+          const startLat = rotation[1];
+          const targetLon = -target.coordinates[0];
+          const targetLat = -target.coordinates[1];
+          const duration = 950;
+          const startTime = performance.now();
+
+          autoRotate = false;
+          velocityX = 0;
+          velocityY = 0;
+
+          function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+          }
+
+          function step(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = easeOutQuart(progress);
+
+            rotation[0] = startLon + (targetLon - startLon) * eased;
+            rotation[1] = startLat + (targetLat - startLat) * eased;
+            render();
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              clearTimeout(autoResumeTimer);
+              autoResumeTimer = setTimeout(() => {
+                if (!dragging) autoRotate = true;
+              }, 1600);
+            }
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        function resize() {
+          const wrap = document.getElementById("globalMapGlobeWrap");
+          if (!wrap) return;
+
+          const wrapWidth = wrap.getBoundingClientRect().width;
+          const scale = Math.max(210, Math.min(wrapWidth * 0.415, 320));
+          projection.scale(scale);
+          render();
+        }
+
+        d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+          .then((world) => {
+            countryFeatures = topojson.feature(world, world.objects.countries).features;
+
+            globeGroup
+              .selectAll(".global-map-land")
+              .data(countryFeatures)
+              .enter()
+              .append("path")
+              .attr("class", "global-map-land")
+              .attr("d", path);
+
+            Object.entries(selectedCountries).forEach(([name, data]) => {
+              const country = countryFeatures.find(
+                (feature) => String(feature.id).padStart(3, "0") === data.id
+              );
+
+              if (!country) return;
+
+              globeGroup
+                .append("path")
+                .datum(country)
+                .attr("class", "global-map-highlight-glow")
+                .attr("data-country", name)
+                .attr("d", path);
+
+              globeGroup
+                .append("path")
+                .datum(country)
+                .attr("class", "global-map-highlight")
+                .attr("data-country", name)
+                .attr("d", path);
+
+              const markerGroup = globeGroup
+                .append("g")
+                .attr("class", "global-map-marker-group")
+                .attr("data-country", name);
+
+              markerGroup
+                .append("circle")
+                .attr("class", "global-map-marker-ring")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", 4);
+
+              markerGroup
+                .append("circle")
+                .attr("class", "global-map-marker")
+                .attr("cx", 0)
+                .attr("cy", 0)
+                .attr("r", 3);
+            });
+
+            const globeWrap = d3.select("#globalMapGlobe");
+
+            const drag = d3.drag()
+              .on("start", (event) => {
+                dragging = true;
+                autoRotate = false;
+                clearTimeout(autoResumeTimer);
+                previousX = event.x;
+                previousY = event.y;
+                velocityX = 0;
+                velocityY = 0;
+              })
+              .on("drag", (event) => {
+                const dx = event.x - previousX;
+                const dy = event.y - previousY;
+
+                velocityX = dx * 0.35;
+                velocityY = dy * 0.22;
+
+                rotation[0] += velocityX;
+                rotation[1] -= velocityY;
+                rotation[1] = Math.max(-85, Math.min(85, rotation[1]));
+
+                previousX = event.x;
+                previousY = event.y;
+
+                render();
+              })
+              .on("end", () => {
+                dragging = false;
+                clearTimeout(autoResumeTimer);
+                autoResumeTimer = setTimeout(() => {
+                  if (!dragging && Math.abs(velocityX) < 0.015 && Math.abs(velocityY) < 0.015) {
+                    velocityX = 0;
+                    velocityY = 0;
+                  }
+                  if (!dragging) autoRotate = true;
+                }, 1300);
+              });
+
+            globeWrap.call(drag);
+
+            document.querySelectorAll(".global-map-country").forEach((button) => {
+              button.addEventListener("mouseenter", () => {
+                const name = button.dataset.country;
+                document.querySelectorAll(".global-map-country").forEach((item) => {
+                  item.classList.toggle("is-active", item === button);
+                });
+
+                globeGroup.selectAll(".global-map-highlight, .global-map-highlight-glow")
+                  .style("opacity", function () {
+                    return d3.select(this).attr("data-country") === name ? 1 : null;
+                  });
+              });
+
+              button.addEventListener("mouseleave", () => {
+                document.querySelectorAll(".global-map-country").forEach((item) => {
+                  item.classList.remove("is-active");
+                });
+                updateHighlightVisibility();
+              });
+
+              button.addEventListener("click", () => {
+                document.querySelectorAll(".global-map-country").forEach((item) => {
+                  item.classList.remove("is-active");
+                });
+                button.classList.add("is-active");
+                rotateToCountry(button.dataset.country);
+              });
+            });
+
+            window.addEventListener("resize", resize, { passive: true });
+            resize();
+            render();
+            animate();
+          })
+          .catch((error) => {
+            console.error("Global globe failed to load:", error);
+          });
+      })();
+    </script>
+
     <!-- 4. SERVICES -->
     <section id="services" class="content-section">
       <div class="container">
